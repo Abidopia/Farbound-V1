@@ -11,15 +11,16 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg:          #0A0A08;
-      --surface:     #101010;
-      --surface-2:   #0e0e0c;
-      --gold:        #C8A96E;
-      --gold-border: rgba(200,169,110,.28);
-      --gold-dim:    rgba(200,169,110,.1);
-      --cream:       #F0E8D8;
-      --cream-dim:   rgba(240,232,216,.58);
-      --cream-muted: rgba(240,232,216,.32);
+      --bg:           #0D0B09;
+      --surface:      #141210;
+      --surface-2:    #120F0D;
+      --gold:         #C8A96E;
+      --rose:         #C4A098;
+      --gold-border:  rgba(200,169,110,.24);
+      --rose-border:  rgba(196,160,152,.2);
+      --cream:        #F2EAE0;
+      --cream-dim:    rgba(242,234,224,.58);
+      --cream-muted:  rgba(242,234,224,.32);
     }
 
     html { scroll-behavior: smooth; }
@@ -36,9 +37,9 @@
 
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--gold-border); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb { background: rgba(200,160,150,.3); border-radius: 2px; }
 
-    /* ─── NAVBAR ────────────────────────────────────────────── */
+    /* ─── NAVBAR ─────────────────────────────────────────── */
     #navbar {
       position: fixed;
       inset: 0 0 auto 0;
@@ -52,10 +53,10 @@
     }
     #navbar.scrolled {
       padding: 1.1rem 4rem;
-      background: rgba(10,10,8,.85);
+      background: rgba(13,11,9,.88);
       backdrop-filter: blur(22px);
       -webkit-backdrop-filter: blur(22px);
-      border-bottom-color: var(--gold-border);
+      border-bottom-color: rgba(200,169,110,.2);
     }
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
@@ -65,11 +66,7 @@
       color: var(--gold);
       text-decoration: none;
     }
-    .nav-links {
-      display: flex;
-      gap: 3rem;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 3rem; list-style: none; }
     .nav-links a {
       position: relative;
       font-size: .68rem;
@@ -95,15 +92,11 @@
       display: none;
       flex-direction: column;
       gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      z-index: 300;
+      background: none; border: none;
+      cursor: pointer; padding: 4px; z-index: 300;
     }
     .nav-toggle span {
-      display: block;
-      width: 22px; height: 1px;
+      display: block; width: 22px; height: 1px;
       background: var(--cream);
       transition: all .35s ease;
     }
@@ -111,7 +104,7 @@
     .nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .nav-toggle.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-    /* ─── HERO ──────────────────────────────────────────────── */
+    /* ─── HERO ───────────────────────────────────────────── */
     #hero {
       position: relative;
       min-height: 100vh;
@@ -125,32 +118,30 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 70% 55% at 50% 42%, rgba(200,169,110,.09) 0%, transparent 65%),
-        radial-gradient(ellipse 35% 35% at 18% 82%, rgba(200,169,110,.04) 0%, transparent 55%),
-        radial-gradient(ellipse 35% 35% at 82% 18%, rgba(200,169,110,.04) 0%, transparent 55%);
+        radial-gradient(ellipse 65% 50% at 50% 40%, rgba(196,160,152,.1) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 35% at 25% 70%, rgba(200,169,110,.07) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 35% at 78% 22%, rgba(200,169,110,.06) 0%, transparent 50%),
+        radial-gradient(ellipse 30% 30% at 60% 75%, rgba(196,160,152,.05) 0%, transparent 50%);
     }
     .hero-ring {
       position: absolute;
       border-radius: 50%;
-      border: 1px solid rgba(200,169,110,.06);
+      border: 1px solid rgba(200,160,152,.07);
       top: 50%; left: 50%;
       transform: translate(-50%,-50%);
       pointer-events: none;
     }
-    .hero-ring:nth-child(1) { width: 700px; height: 700px; }
-    .hero-ring:nth-child(2) { width: 480px; height: 480px; border-color: rgba(200,169,110,.04); }
-    .hero-ring:nth-child(3) { width: 260px; height: 260px; }
+    .hero-ring:nth-child(1) { width: 720px; height: 720px; border-color: rgba(200,160,152,.05); }
+    .hero-ring:nth-child(2) { width: 500px; height: 500px; border-color: rgba(200,169,110,.05); }
+    .hero-ring:nth-child(3) { width: 280px; height: 280px; border-color: rgba(200,160,152,.07); }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 820px;
-    }
+    .hero-content { position: relative; z-index: 1; max-width: 820px; }
+
     .hero-eyebrow {
       font-size: .62rem;
       letter-spacing: .45em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--rose);
       margin-bottom: 2.2rem;
       opacity: 0;
       animation: fadeUp .9s ease .25s forwards;
@@ -168,8 +159,8 @@
     .hero-headline em { font-style: italic; color: var(--gold); }
 
     .hero-divider {
-      width: 1px; height: 32px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
+      width: 1px; height: 34px;
+      background: linear-gradient(to bottom, var(--rose), transparent);
       margin: 0 auto 1.75rem;
       opacity: 0;
       animation: fadeIn .9s ease .6s forwards;
@@ -177,10 +168,10 @@
     .hero-sub {
       font-size: .88rem;
       color: var(--cream-dim);
-      max-width: 460px;
+      max-width: 480px;
       margin: 0 auto 3rem;
       letter-spacing: .03em;
-      line-height: 1.8;
+      line-height: 1.85;
       opacity: 0;
       animation: fadeUp .9s ease .65s forwards;
     }
@@ -188,6 +179,7 @@
       opacity: 0;
       animation: fadeUp .9s ease .85s forwards;
     }
+
     .btn-primary {
       position: relative;
       display: inline-block;
@@ -195,21 +187,18 @@
       border: 1px solid var(--gold);
       color: var(--gold);
       font-family: 'Inter', sans-serif;
-      font-size: .68rem;
-      font-weight: 400;
+      font-size: .68rem; font-weight: 400;
       letter-spacing: .28em;
       text-transform: uppercase;
       text-decoration: none;
       background: transparent;
-      cursor: pointer;
-      overflow: hidden;
+      cursor: pointer; overflow: hidden;
       transition: color .4s ease;
     }
     .btn-primary::before {
       content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--gold);
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--rose) 100%);
       transform: translateX(-102%);
       transition: transform .42s cubic-bezier(.7,0,.3,1);
     }
@@ -221,47 +210,39 @@
       position: absolute;
       bottom: 2.8rem; left: 50%;
       transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .55rem;
+      display: flex; flex-direction: column;
+      align-items: center; gap: .55rem;
       opacity: 0;
       animation: fadeIn 1s ease 1.6s forwards;
     }
     .hero-scroll-hint span {
-      font-size: .58rem;
-      letter-spacing: .32em;
-      text-transform: uppercase;
-      color: var(--cream-muted);
+      font-size: .58rem; letter-spacing: .32em;
+      text-transform: uppercase; color: var(--cream-muted);
     }
     .scroll-bar {
       width: 1px; height: 42px;
-      background: linear-gradient(to bottom, var(--gold) 0%, transparent 100%);
+      background: linear-gradient(to bottom, var(--rose) 0%, transparent 100%);
       animation: scrollPulse 2.2s ease-in-out infinite;
     }
 
-    /* ─── SHARED ────────────────────────────────────────────── */
+    /* ─── SHARED ─────────────────────────────────────────── */
     .section-pad { padding: 7rem 4rem; }
 
     .section-label {
-      font-size: .6rem;
-      letter-spacing: .42em;
-      text-transform: uppercase;
-      color: var(--gold);
+      font-size: .6rem; letter-spacing: .42em;
+      text-transform: uppercase; color: var(--rose);
       margin-bottom: .9rem;
     }
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 300;
-      line-height: 1.18;
+      font-weight: 300; line-height: 1.18;
       color: var(--cream);
     }
     .section-title em { font-style: italic; color: var(--gold); }
 
     .reveal {
-      opacity: 0;
-      transform: translateY(28px);
+      opacity: 0; transform: translateY(28px);
       transition: opacity .85s ease, transform .85s ease;
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -270,27 +251,24 @@
     .delay-3 { transition-delay: .3s; }
     .delay-4 { transition-delay: .42s; }
 
-    /* ─── COLLECTION — GENDER SELECT ────────────────────────── */
+    /* ─── COLLECTION — GENDER SELECT ─────────────────────── */
     #collection { background: var(--bg); }
 
-    .col-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
+    .col-header { text-align: center; margin-bottom: 4rem; }
 
     .gender-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
-      max-width: 900px;
+      max-width: 860px;
       margin: 0 auto;
     }
 
     .gender-card {
       position: relative;
       background: var(--surface);
-      border: 1px solid rgba(200,169,110,.15);
-      padding: 4rem 2.5rem 3.5rem;
+      border: 1px solid rgba(200,160,150,.14);
+      padding: 4.5rem 2.5rem 4rem;
       text-align: center;
       cursor: pointer;
       overflow: hidden;
@@ -299,102 +277,76 @@
     .gender-card::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 120% 80% at 50% 0%, rgba(200,169,110,.07) 0%, transparent 65%);
       opacity: 0;
       transition: opacity .42s ease;
     }
-    .gender-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--gold);
-      box-shadow: 0 0 40px rgba(200,169,110,.14), 0 24px 60px rgba(0,0,0,.4);
+    .gender-card[data-target="women"]::before {
+      background: radial-gradient(ellipse 120% 80% at 50% 0%, rgba(196,160,152,.08) 0%, transparent 65%);
     }
+    .gender-card[data-target="men"]::before {
+      background: radial-gradient(ellipse 120% 80% at 50% 0%, rgba(200,169,110,.07) 0%, transparent 65%);
+    }
+    .gender-card:hover { transform: translateY(-8px); box-shadow: 0 0 50px rgba(200,150,140,.12), 0 24px 60px rgba(0,0,0,.4); }
+    .gender-card[data-target="women"]:hover { border-color: var(--rose); }
+    .gender-card[data-target="men"]:hover { border-color: var(--gold); }
     .gender-card:hover::before { opacity: 1; }
 
     .gender-count {
-      font-size: .6rem;
-      letter-spacing: .35em;
-      text-transform: uppercase;
-      color: var(--gold);
+      font-size: .6rem; letter-spacing: .35em;
+      text-transform: uppercase; color: var(--cream-muted);
       margin-bottom: 2.5rem;
     }
     .gender-icon {
       margin: 0 auto 2rem;
-      opacity: .45;
-      transition: opacity .4s ease;
+      opacity: .4; transition: opacity .4s ease;
     }
-    .gender-card:hover .gender-icon { opacity: .8; }
-
+    .gender-card:hover .gender-icon { opacity: .75; }
     .gender-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
-      font-weight: 300;
-      letter-spacing: .04em;
-      color: var(--cream);
+      font-size: 2.8rem; font-weight: 300;
+      letter-spacing: .04em; color: var(--cream);
       margin-bottom: .5rem;
     }
     .gender-sub {
-      font-size: .65rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--cream-muted);
+      font-size: .62rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--cream-muted);
       margin-bottom: 2.5rem;
     }
     .gender-arrow {
       display: inline-block;
-      font-size: .62rem;
-      letter-spacing: .22em;
+      font-size: .6rem; letter-spacing: .22em;
       text-transform: uppercase;
-      color: var(--gold);
-      border-bottom: 1px solid rgba(200,169,110,.3);
       padding-bottom: 3px;
+      border-bottom: 1px solid transparent;
       transition: letter-spacing .3s ease, border-color .3s ease;
     }
-    .gender-card:hover .gender-arrow {
-      letter-spacing: .3em;
-      border-color: var(--gold);
-    }
+    .gender-card[data-target="women"] .gender-arrow { color: var(--rose); }
+    .gender-card[data-target="men"]   .gender-arrow { color: var(--gold); }
+    .gender-card[data-target="women"]:hover .gender-arrow { letter-spacing: .3em; border-color: var(--rose); }
+    .gender-card[data-target="men"]:hover   .gender-arrow { letter-spacing: .3em; border-color: var(--gold); }
 
-    /* ─── COLLECTION — PRODUCTS VIEW ────────────────────────── */
-    .products-view {
-      display: none;
-      opacity: 0;
-      transition: opacity .45s ease;
-    }
-    .products-view.active {
-      display: block;
-    }
-    .products-view.visible {
-      opacity: 1;
-    }
+    /* ─── COLLECTION — PRODUCTS VIEW ─────────────────────── */
+    .products-view { display: none; opacity: 0; transition: opacity .45s ease; }
+    .products-view.active  { display: block; }
+    .products-view.visible { opacity: 1; }
 
     .products-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 2rem;
-      margin-bottom: 3.5rem;
-      flex-wrap: wrap;
+      display: flex; align-items: flex-start;
+      gap: 2rem; margin-bottom: 3.5rem; flex-wrap: wrap;
     }
     .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      font-size: .62rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--cream-muted);
-      background: none;
-      border: 1px solid rgba(200,169,110,.2);
-      padding: .65rem 1.2rem;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--cream-muted); background: none;
+      border: 1px solid rgba(200,160,150,.2);
+      padding: .65rem 1.2rem; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-weight: 400;
       transition: color .3s ease, border-color .3s ease;
-      white-space: nowrap;
-      margin-top: .3rem;
+      white-space: nowrap; margin-top: .3rem;
     }
-    .back-btn:hover { color: var(--gold); border-color: var(--gold); }
+    .back-btn:hover { color: var(--rose); border-color: var(--rose); }
 
-    /* ─── PRODUCT CARDS ─────────────────────────────────────── */
+    /* ─── PRODUCT CARDS ──────────────────────────────────── */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -406,305 +358,119 @@
     .card {
       position: relative;
       background: var(--surface);
-      border: 1px solid rgba(200,169,110,.12);
+      border: 1px solid rgba(200,160,150,.1);
       padding: 2rem 1.75rem;
       cursor: pointer;
-      transition:
-        transform .42s cubic-bezier(.2,0,0,1),
-        box-shadow .42s ease,
-        border-color .42s ease;
+      transition: transform .42s cubic-bezier(.2,0,0,1), box-shadow .42s ease, border-color .42s ease;
       overflow: hidden;
     }
     .card-glow {
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 100% 70% at 50% 0%, rgba(200,169,110,.06) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity .42s ease;
+      opacity: 0; transition: opacity .42s ease;
       pointer-events: none;
     }
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: var(--gold);
-      box-shadow:
-        0 0 0 1px rgba(200,169,110,.15),
-        0 0 36px rgba(200,169,110,.13),
-        0 20px 50px rgba(0,0,0,.4);
+    /* Women's cards get rose glow, men's get gold glow */
+    #womenView .card-glow {
+      background: radial-gradient(ellipse 100% 70% at 50% 0%, rgba(196,160,152,.07) 0%, transparent 70%);
     }
+    #menView .card-glow {
+      background: radial-gradient(ellipse 100% 70% at 50% 0%, rgba(200,169,110,.06) 0%, transparent 70%);
+    }
+    #womenView .card:hover { border-color: var(--rose); box-shadow: 0 0 0 1px rgba(196,160,152,.15), 0 0 36px rgba(196,160,152,.12), 0 20px 50px rgba(0,0,0,.4); }
+    #menView  .card:hover  { border-color: var(--gold); box-shadow: 0 0 0 1px rgba(200,169,110,.15), 0 0 36px rgba(200,169,110,.12), 0 20px 50px rgba(0,0,0,.4); }
+    .card:hover { transform: translateY(-8px); }
     .card:hover .card-glow { opacity: 1; }
 
-    .card-num {
-      font-size: .58rem;
-      letter-spacing: .28em;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
-    .card-bottle {
-      margin-bottom: 1.5rem;
-      opacity: .45;
-      transition: opacity .42s ease;
-    }
-    .card:hover .card-bottle { opacity: .75; }
+    .card-num { font-size: .56rem; letter-spacing: .28em; color: var(--cream-muted); margin-bottom: 1.5rem; }
+    .card-bottle { margin-bottom: 1.5rem; opacity: .4; transition: opacity .42s ease; }
+    .card:hover .card-bottle { opacity: .72; }
 
-    .card-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.55rem;
-      font-weight: 400;
-      color: var(--cream);
-      margin-bottom: .4rem;
-    }
-    .card-character {
-      font-size: .6rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.2rem;
-    }
-    .notes-heading {
-      font-size: .54rem;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: var(--cream-muted);
-      margin-bottom: .5rem;
-    }
-    .notes-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .3rem;
-      margin-bottom: 1.4rem;
-    }
-    .pill {
-      font-size: .58rem;
-      padding: .22rem .6rem;
-      border: 1px solid rgba(200,169,110,.2);
-      color: var(--cream-dim);
-      letter-spacing: .05em;
-    }
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 1.2rem;
-      border-top: 1px solid rgba(200,169,110,.1);
-    }
-    .card-price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
-      font-weight: 400;
-      color: var(--gold);
-    }
-    .card-action {
-      font-size: .58rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--cream-muted);
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      transition: color .3s ease;
-      padding: 0;
-    }
-    .card:hover .card-action { color: var(--gold); }
+    .card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 400; color: var(--cream); margin-bottom: .4rem; }
+    .card-character { font-size: .58rem; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.2rem; }
+    #womenView .card-character { color: var(--rose); }
+    #menView   .card-character { color: var(--gold); }
 
-    /* ─── STORY ─────────────────────────────────────────────── */
+    .notes-heading { font-size: .54rem; letter-spacing: .25em; text-transform: uppercase; color: var(--cream-muted); margin-bottom: .5rem; }
+    .notes-pills { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: 1.4rem; }
+    .pill { font-size: .57rem; padding: .22rem .6rem; border: 1px solid rgba(200,160,150,.18); color: var(--cream-dim); letter-spacing: .05em; }
+
+    .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1.2rem; border-top: 1px solid rgba(200,160,150,.1); }
+    .card-price { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; }
+    #womenView .card-price { color: var(--rose); }
+    #menView   .card-price { color: var(--gold); }
+
+    .card-action { font-size: .56rem; letter-spacing: .18em; text-transform: uppercase; color: var(--cream-muted); background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 400; transition: color .3s ease; padding: 0; }
+    #womenView .card:hover .card-action { color: var(--rose); }
+    #menView   .card:hover .card-action { color: var(--gold); }
+
+    /* ─── STORY ──────────────────────────────────────────── */
     #story {
       background: var(--surface-2);
-      border-top: 1px solid rgba(200,169,110,.07);
-      border-bottom: 1px solid rgba(200,169,110,.07);
+      border-top: 1px solid rgba(200,160,150,.07);
+      border-bottom: 1px solid rgba(200,160,150,.07);
     }
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
-      max-width: 1120px;
-      margin: 0 auto;
-    }
-    .story-p {
-      font-size: .88rem;
-      color: var(--cream-dim);
-      line-height: 1.95;
-      margin-bottom: 1.2rem;
-    }
-    .story-stats {
-      display: flex;
-      gap: 3rem;
-      margin-top: 2.2rem;
-      padding-top: 2.2rem;
-      border-top: 1px solid rgba(200,169,110,.1);
-    }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; max-width: 1120px; margin: 0 auto; }
+    .story-p { font-size: .88rem; color: var(--cream-dim); line-height: 1.95; margin-bottom: 1.2rem; }
+    .story-stats { display: flex; gap: 3rem; margin-top: 2.2rem; padding-top: 2.2rem; border-top: 1px solid rgba(200,160,150,.12); }
     .stat { display: flex; flex-direction: column; gap: .2rem; }
-    .stat-n {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.4rem;
-      font-weight: 300;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .stat-l {
-      font-size: .58rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--cream-muted);
-    }
-    .story-visual {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .compass-wrap { width: 390px; height: 390px; }
-    .compass-wrap svg { width: 100%; height: 100%; }
-    .compass-outer-ring {
-      animation: rotateSlow 120s linear infinite;
-      transform-origin: 195px 195px;
-    }
+    .stat-n { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; color: var(--gold); line-height: 1; }
+    .stat-l { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--cream-muted); }
+    .story-visual { display: flex; align-items: center; justify-content: center; }
+    .floral-wrap { width: 390px; height: 390px; }
+    .floral-wrap svg { width: 100%; height: 100%; }
+    .floral-outer { animation: rotateSlow 90s linear infinite; transform-origin: 195px 195px; }
 
-    /* ─── NEWSLETTER ────────────────────────────────────────── */
+    /* ─── NEWSLETTER ─────────────────────────────────────── */
     #newsletter { background: var(--bg); text-align: center; }
     .newsletter-inner { max-width: 520px; margin: 0 auto; }
     .newsletter-inner .section-title { margin: .5rem 0 .75rem; }
     .nl-sub { font-size: .84rem; color: var(--cream-dim); margin-bottom: 2.5rem; }
-    .nl-form {
-      display: flex;
-      border: 1px solid var(--gold-border);
-      overflow: hidden;
-      transition: border-color .3s ease, box-shadow .3s ease;
-    }
-    .nl-form:focus-within {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 1px var(--gold);
-    }
-    .nl-input {
-      flex: 1;
-      background: transparent;
-      border: none; outline: none;
-      padding: 1rem 1.4rem;
-      color: var(--cream);
-      font-family: 'Inter', sans-serif;
-      font-size: .8rem;
-      font-weight: 300;
-      letter-spacing: .04em;
-    }
+    .nl-form { display: flex; border: 1px solid rgba(200,160,150,.25); overflow: hidden; transition: border-color .3s ease, box-shadow .3s ease; }
+    .nl-form:focus-within { border-color: var(--rose); box-shadow: 0 0 0 1px var(--rose); }
+    .nl-input { flex: 1; background: transparent; border: none; outline: none; padding: 1rem 1.4rem; color: var(--cream); font-family: 'Inter', sans-serif; font-size: .8rem; font-weight: 300; letter-spacing: .04em; }
     .nl-input::placeholder { color: var(--cream-muted); }
-    .nl-btn {
-      background: var(--gold);
-      border: none;
-      padding: 1rem 1.8rem;
-      color: var(--bg);
-      font-family: 'Inter', sans-serif;
-      font-size: .62rem;
-      font-weight: 500;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background .3s ease;
-      min-width: 120px;
-    }
-    .nl-btn:hover { background: #d4b87a; }
-    .nl-btn.success { background: rgba(200,169,110,.35); }
-    .nl-note {
-      font-size: .62rem;
-      color: var(--cream-muted);
-      margin-top: 1.1rem;
-      letter-spacing: .06em;
-    }
+    .nl-btn { background: linear-gradient(135deg, var(--gold) 0%, var(--rose) 100%); border: none; padding: 1rem 1.8rem; color: var(--bg); font-family: 'Inter', sans-serif; font-size: .62rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; cursor: pointer; white-space: nowrap; transition: opacity .3s ease; min-width: 120px; }
+    .nl-btn:hover { opacity: .88; }
+    .nl-btn.success { opacity: .5; }
+    .nl-note { font-size: .62rem; color: var(--cream-muted); margin-top: 1.1rem; letter-spacing: .06em; }
 
-    /* ─── FOOTER ────────────────────────────────────────────── */
-    footer {
-      padding: 2.8rem 4rem;
-      background: var(--bg);
-      border-top: 1px solid rgba(200,169,110,.1);
-    }
-    .footer-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1.8rem;
-    }
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 400;
-      letter-spacing: .32em;
-      color: var(--gold);
-    }
-    .footer-links {
-      display: flex;
-      gap: 2.4rem;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-    .footer-links a {
-      font-size: .62rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--cream-muted);
-      text-decoration: none;
-      transition: color .3s ease;
-    }
-    .footer-links a:hover { color: var(--gold); }
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer { padding: 2.8rem 4rem; background: var(--bg); border-top: 1px solid rgba(200,160,150,.1); }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.8rem; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; letter-spacing: .32em; color: var(--gold); }
+    .footer-links { display: flex; gap: 2.4rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--cream-muted); text-decoration: none; transition: color .3s ease; }
+    .footer-links a:hover { color: var(--rose); }
     .footer-copy { font-size: .62rem; color: var(--cream-muted); letter-spacing: .07em; }
 
-    /* ─── KEYFRAMES ─────────────────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-    @keyframes scrollPulse {
-      0%,100% { opacity: 1; }
-      50%      { opacity: .3; }
-    }
-    @keyframes rotateSlow {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
+    /* ─── KEYFRAMES ──────────────────────────────────────── */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes scrollPulse { 0%,100% { opacity:1; } 50% { opacity:.3; } }
+    @keyframes rotateSlow { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
 
-    /* ─── RESPONSIVE ────────────────────────────────────────── */
-    @media (max-width: 1200px) {
-      .cards-grid { grid-template-columns: repeat(3, 1fr); }
-    }
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1200px) { .cards-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 1024px) {
       .section-pad { padding: 5.5rem 3rem; }
       #navbar, #navbar.scrolled { padding-left: 3rem; padding-right: 3rem; }
       .story-grid { gap: 3.5rem; }
-      .compass-wrap { width: 310px; height: 310px; }
+      .floral-wrap { width: 310px; height: 310px; }
     }
     @media (max-width: 768px) {
       #navbar { padding: 1.4rem 1.5rem; }
       #navbar.scrolled { padding: 1rem 1.5rem; }
-      .nav-links {
-        position: fixed;
-        top: 0; right: -100%;
-        height: 100vh; width: 260px;
-        background: rgba(10,10,8,.97);
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 2.4rem;
-        padding: 3rem 2.5rem;
-        border-left: 1px solid var(--gold-border);
-        transition: right .42s cubic-bezier(.7,0,.3,1);
-        backdrop-filter: blur(20px);
-      }
+      .nav-links { position: fixed; top:0; right:-100%; height:100vh; width:260px; background:rgba(13,11,9,.97); flex-direction:column; justify-content:center; align-items:flex-start; gap:2.4rem; padding:3rem 2.5rem; border-left:1px solid rgba(200,160,150,.18); transition:right .42s cubic-bezier(.7,0,.3,1); backdrop-filter:blur(20px); }
       .nav-links.open { right: 0; }
       .nav-links a { font-size: .82rem; }
       .nav-toggle { display: flex; }
       .section-pad { padding: 4.5rem 1.5rem; }
       footer { padding: 2.5rem 1.5rem; }
-      .gender-grid { grid-template-columns: 1fr; max-width: 420px; }
+      .gender-grid { grid-template-columns: 1fr; max-width: 400px; }
       .cards-grid { grid-template-columns: repeat(2, 1fr); }
       .story-grid { grid-template-columns: 1fr; gap: 3rem; }
       .story-visual { order: -1; }
-      .compass-wrap { width: 250px; height: 250px; }
+      .floral-wrap { width: 250px; height: 250px; }
       .story-stats { flex-wrap: wrap; gap: 2rem; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
     }
@@ -718,7 +484,7 @@
 </head>
 <body>
 
-<!-- ═══ NAVBAR ═══════════════════════════════════════════════════ -->
+<!-- ═══ NAVBAR ═══════════════════════════════════════════ -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo">FARBOUND</a>
   <ul class="nav-links" id="navLinks">
@@ -731,7 +497,7 @@
   </button>
 </nav>
 
-<!-- ═══ HERO ══════════════════════════════════════════════════════ -->
+<!-- ═══ HERO ══════════════════════════════════════════════ -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-ring"></div>
@@ -741,7 +507,7 @@
     <p class="hero-eyebrow">Eau de Parfum &nbsp;·&nbsp; Est. 2024</p>
     <h1 class="hero-headline">Scents That<br><em>Travel With You</em></h1>
     <div class="hero-divider"></div>
-    <p class="hero-sub">Rare ingredients gathered from the world's most remote places, bottled for those who carry the spirit of exploration wherever they go.</p>
+    <p class="hero-sub">Rare ingredients distilled from sun-warmed lands and quiet forests, composed for those who seek beauty in the places between.</p>
     <div class="hero-cta">
       <a href="#collection" class="btn-primary"><span>Explore Collection</span></a>
     </div>
@@ -752,7 +518,7 @@
   </div>
 </section>
 
-<!-- ═══ COLLECTION ════════════════════════════════════════════════ -->
+<!-- ═══ COLLECTION ════════════════════════════════════════ -->
 <section id="collection" class="section-pad">
 
   <!-- Gender Selection -->
@@ -763,36 +529,44 @@
     </div>
     <div class="gender-grid">
 
-      <!-- Women -->
+      <!-- Pour Femme -->
       <div class="gender-card reveal delay-1" data-target="women">
         <p class="gender-count">08 Fragrances</p>
-        <svg class="gender-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="32" r="30" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".6"/>
-          <circle cx="32" cy="32" r="20" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-          <path d="M32 12 C32 12, 40 22, 40 32 C40 42, 32 52, 32 52 C32 52, 24 42, 24 32 C24 22, 32 12, 32 12Z" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".7" fill="none"/>
-          <path d="M12 32 C12 32, 22 24, 32 24 C42 24, 52 32, 52 32 C52 32, 42 40, 32 40 C22 40, 12 32, 12 32Z" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".7" fill="none"/>
-          <circle cx="32" cy="32" r="2.5" fill="#C8A96E" fill-opacity=".6"/>
+        <svg class="gender-icon" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Soft floral / petal icon for women -->
+          <circle cx="34" cy="34" r="32" stroke="#C4A098" stroke-width=".7" stroke-opacity=".55"/>
+          <circle cx="34" cy="34" r="22" stroke="#C4A098" stroke-width=".4" stroke-opacity=".3"/>
+          <!-- 6 petals -->
+          <path d="M34 34 Q39 26 34 16 Q29 26 34 34 Z" stroke="#C4A098" stroke-width=".8" stroke-opacity=".65" fill="rgba(196,160,152,.04)"/>
+          <path d="M34 34 Q39 26 34 16 Q29 26 34 34 Z" stroke="#C4A098" stroke-width=".8" stroke-opacity=".65" fill="rgba(196,160,152,.04)" transform="rotate(60,34,34)"/>
+          <path d="M34 34 Q39 26 34 16 Q29 26 34 34 Z" stroke="#C4A098" stroke-width=".8" stroke-opacity=".65" fill="rgba(196,160,152,.04)" transform="rotate(120,34,34)"/>
+          <path d="M34 34 Q39 26 34 16 Q29 26 34 34 Z" stroke="#C4A098" stroke-width=".8" stroke-opacity=".65" fill="rgba(196,160,152,.04)" transform="rotate(180,34,34)"/>
+          <path d="M34 34 Q39 26 34 16 Q29 26 34 34 Z" stroke="#C4A098" stroke-width=".8" stroke-opacity=".65" fill="rgba(196,160,152,.04)" transform="rotate(240,34,34)"/>
+          <path d="M34 34 Q39 26 34 16 Q29 26 34 34 Z" stroke="#C4A098" stroke-width=".8" stroke-opacity=".65" fill="rgba(196,160,152,.04)" transform="rotate(300,34,34)"/>
+          <circle cx="34" cy="34" r="3" stroke="#C4A098" stroke-width=".6" stroke-opacity=".6" fill="rgba(196,160,152,.15)"/>
         </svg>
         <h3 class="gender-title">Pour Femme</h3>
         <p class="gender-sub">Women's Collection</p>
-        <span class="gender-arrow">Explore →</span>
+        <span class="gender-arrow">Discover →</span>
       </div>
 
-      <!-- Men -->
+      <!-- Pour Homme -->
       <div class="gender-card reveal delay-2" data-target="men">
         <p class="gender-count">07 Fragrances</p>
-        <svg class="gender-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="2" width="60" height="60" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".6"/>
-          <rect x="12" y="12" width="40" height="40" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-          <line x1="2"  y1="2"  x2="62" y2="62" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".4"/>
-          <line x1="62" y1="2"  x2="2"  y2="62" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".4"/>
-          <line x1="32" y1="2"  x2="32" y2="62" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".3"/>
-          <line x1="2"  y1="32" x2="62" y2="32" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".3"/>
-          <rect x="27" y="27" width="10" height="10" fill="#C8A96E" fill-opacity=".5"/>
+        <svg class="gender-icon" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Organic waves / horizon icon for men -->
+          <circle cx="34" cy="34" r="32" stroke="#C8A96E" stroke-width=".7" stroke-opacity=".5"/>
+          <!-- Flowing horizontal curves -->
+          <path d="M 8 28 C 18 22, 50 22, 60 28" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".65"/>
+          <path d="M 8 34 C 18 28, 50 40, 60 34" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".65"/>
+          <path d="M 8 40 C 18 46, 50 46, 60 40" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".65"/>
+          <path d="M 8 22 C 18 16, 50 16, 60 22" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+          <path d="M 8 46 C 18 52, 50 52, 60 46" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+          <circle cx="34" cy="34" r="3" stroke="#C8A96E" stroke-width=".6" stroke-opacity=".6" fill="rgba(200,169,110,.15)"/>
         </svg>
         <h3 class="gender-title">Pour Homme</h3>
         <p class="gender-sub">Men's Collection</p>
-        <span class="gender-arrow">Explore →</span>
+        <span class="gender-arrow">Discover →</span>
       </div>
 
     </div>
@@ -809,10 +583,9 @@
     </div>
     <div class="cards-grid">
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">W–01 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C4A098" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C4A098" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C4A098" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C4A098" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C4A098" fill-opacity=".35"/></svg>
         <h3 class="card-name">Rose Éternelle</h3>
         <p class="card-character">Floral · Powdery</p>
         <p class="notes-heading">Notes</p>
@@ -820,10 +593,9 @@
         <div class="card-footer"><span class="card-price">$195</span><button class="card-action">Add →</button></div>
       </div>
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">W–02 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C4A098" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C4A098" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C4A098" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C4A098" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C4A098" fill-opacity=".35"/></svg>
         <h3 class="card-name">Jasmin Minuit</h3>
         <p class="card-character">Floral · Sensual</p>
         <p class="notes-heading">Notes</p>
@@ -831,10 +603,9 @@
         <div class="card-footer"><span class="card-price">$180</span><button class="card-action">Add →</button></div>
       </div>
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">W–03 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C4A098" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C4A098" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C4A098" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C4A098" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C4A098" fill-opacity=".35"/></svg>
         <h3 class="card-name">Iris Sauvage</h3>
         <p class="card-character">Powdery · Earthy</p>
         <p class="notes-heading">Notes</p>
@@ -842,10 +613,9 @@
         <div class="card-footer"><span class="card-price">$170</span><button class="card-action">Add →</button></div>
       </div>
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">W–04 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C4A098" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C4A098" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C4A098" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C4A098" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C4A098" fill-opacity=".35"/></svg>
         <h3 class="card-name">Musc Blanc</h3>
         <p class="card-character">Clean · Airy</p>
         <p class="notes-heading">Notes</p>
@@ -853,10 +623,9 @@
         <div class="card-footer"><span class="card-price">$170</span><button class="card-action">Add →</button></div>
       </div>
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">W–05 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C4A098" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C4A098" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C4A098" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C4A098" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C4A098" fill-opacity=".35"/></svg>
         <h3 class="card-name">Fleur d'Ébène</h3>
         <p class="card-character">Floral · Woody</p>
         <p class="notes-heading">Notes</p>
@@ -864,10 +633,9 @@
         <div class="card-footer"><span class="card-price">$195</span><button class="card-action">Add →</button></div>
       </div>
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">W–06 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C4A098" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C4A098" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C4A098" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C4A098" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C4A098" fill-opacity=".35"/></svg>
         <h3 class="card-name">Bergamote Est</h3>
         <p class="card-character">Fresh · Citrus</p>
         <p class="notes-heading">Notes</p>
@@ -875,10 +643,9 @@
         <div class="card-footer"><span class="card-price">$160</span><button class="card-action">Add →</button></div>
       </div>
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">W–07 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C4A098" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C4A098" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C4A098" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C4A098" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C4A098" fill-opacity=".35"/></svg>
         <h3 class="card-name">Santal Dusk</h3>
         <p class="card-character">Warm · Intimate</p>
         <p class="notes-heading">Notes</p>
@@ -886,10 +653,9 @@
         <div class="card-footer"><span class="card-price">$165</span><button class="card-action">Add →</button></div>
       </div>
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">W–08 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C4A098" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C4A098" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C4A098" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C4A098" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C4A098" fill-opacity=".35"/></svg>
         <h3 class="card-name">Ambre Voyage</h3>
         <p class="card-character">Warm · Spiced</p>
         <p class="notes-heading">Notes</p>
@@ -911,10 +677,9 @@
     </div>
     <div class="cards-grid">
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">M–01 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".35"/></svg>
         <h3 class="card-name">Noir Absolu</h3>
         <p class="card-character">Smoky · Resinous</p>
         <p class="notes-heading">Notes</p>
@@ -922,10 +687,9 @@
         <div class="card-footer"><span class="card-price">$180</span><button class="card-action">Add →</button></div>
       </div>
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">M–02 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".35"/></svg>
         <h3 class="card-name">Cèdre Mystique</h3>
         <p class="card-character">Woody · Dry</p>
         <p class="notes-heading">Notes</p>
@@ -933,10 +697,9 @@
         <div class="card-footer"><span class="card-price">$185</span><button class="card-action">Add →</button></div>
       </div>
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">M–03 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".35"/></svg>
         <h3 class="card-name">Oud Nomade</h3>
         <p class="card-character">Dark · Magnetic</p>
         <p class="notes-heading">Notes</p>
@@ -944,10 +707,9 @@
         <div class="card-footer"><span class="card-price">$210</span><button class="card-action">Add →</button></div>
       </div>
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">M–04 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".35"/></svg>
         <h3 class="card-name">Vétiver Terre</h3>
         <p class="card-character">Green · Smoky</p>
         <p class="notes-heading">Notes</p>
@@ -955,10 +717,9 @@
         <div class="card-footer"><span class="card-price">$165</span><button class="card-action">Add →</button></div>
       </div>
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">M–05 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".35"/></svg>
         <h3 class="card-name">Patchouli Atlas</h3>
         <p class="card-character">Deep · Resinous</p>
         <p class="notes-heading">Notes</p>
@@ -966,10 +727,9 @@
         <div class="card-footer"><span class="card-price">$175</span><button class="card-action">Add →</button></div>
       </div>
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">M–06 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".35"/></svg>
         <h3 class="card-name">Encens Sacré</h3>
         <p class="card-character">Sacred · Smoky</p>
         <p class="notes-heading">Notes</p>
@@ -977,10 +737,9 @@
         <div class="card-footer"><span class="card-price">$200</span><button class="card-action">Add →</button></div>
       </div>
 
-      <div class="card">
-        <div class="card-glow"></div>
+      <div class="card"><div class="card-glow"></div>
         <p class="card-num">M–07 · Laverne</p>
-        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <svg class="card-bottle" width="34" height="50" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".35"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width=".9"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".4" stroke-opacity=".4"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".7" stroke-opacity=".5"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".35"/></svg>
         <h3 class="card-name">Tabac Doré</h3>
         <p class="card-character">Warm · Leathery</p>
         <p class="notes-heading">Notes</p>
@@ -993,13 +752,13 @@
 
 </section>
 
-<!-- ═══ STORY ═════════════════════════════════════════════════════ -->
+<!-- ═══ STORY ═════════════════════════════════════════════ -->
 <section id="story" class="section-pad">
   <div class="story-grid">
     <div class="story-text">
       <p class="section-label reveal">Our Story</p>
       <h2 class="section-title reveal delay-1" style="margin:.5rem 0 1.6rem">Born from Roads<br><em>Less Travelled</em></h2>
-      <p class="story-p reveal delay-2">FARBOUND was born from a simple obsession: the way a single scent can collapse the distance between who you are and where you've been. From the cedar-laced bazaars of old Marrakech to the salt winds of the Faroe Islands, every fragrance is a cartography of the senses.</p>
+      <p class="story-p reveal delay-2">FARBOUND was born from a simple obsession: the way a single scent can collapse the distance between who you are and where you've been. From the cedar-laced bazaars of old Marrakech to the salt winds of the Faroe Islands — every fragrance is a cartography of the senses.</p>
       <p class="story-p reveal delay-3">We source our raw ingredients with ruthless intention — partnering with growers on six continents, hand-selecting resins, florals, and woods at their peak expression. The result is a perfume house that does not simply smell beautiful, but feels like <em>somewhere</em>.</p>
       <div class="story-stats reveal delay-4">
         <div class="stat"><span class="stat-n">6</span><span class="stat-l">Continents</span></div>
@@ -1008,42 +767,49 @@
       </div>
     </div>
     <div class="story-visual reveal delay-2">
-      <div class="compass-wrap">
+      <div class="floral-wrap">
         <svg viewBox="0 0 390 390" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g class="compass-outer-ring">
-            <circle cx="195" cy="195" r="183" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".18"/>
-            <defs><path id="arcPath" d="M 195 195 m -178 0 a 178 178 0 1 1 356 0"/></defs>
-            <text font-family="Cormorant Garamond, serif" font-size="10.5" fill="#C8A96E" fill-opacity=".35" letter-spacing="19.5">
-              <textPath href="#arcPath">FARBOUND · EAU DE PARFUM · EST. 2024 · </textPath>
+          <!-- Slowly rotating outer ring with text -->
+          <g class="floral-outer">
+            <circle cx="195" cy="195" r="183" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".2"/>
+            <defs><path id="floralArc" d="M 195 195 m -178 0 a 178 178 0 1 1 356 0"/></defs>
+            <text font-family="Cormorant Garamond, serif" font-size="10.5" fill="#C8A96E" fill-opacity=".3" letter-spacing="19.5">
+              <textPath href="#floralArc">FARBOUND · EAU DE PARFUM · EST. 2024 · </textPath>
             </text>
           </g>
-          <circle cx="195" cy="195" r="162" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".22"/>
-          <circle cx="195" cy="195" r="120" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".16"/>
-          <circle cx="195" cy="195" r="76"  stroke="#C8A96E" stroke-width=".5" stroke-opacity=".22"/>
-          <circle cx="195" cy="195" r="34"  stroke="#C8A96E" stroke-width=".5" stroke-opacity=".18"/>
-          <line x1="195" y1="33"  x2="195" y2="357" stroke="#C8A96E" stroke-width=".3" stroke-opacity=".12"/>
-          <line x1="33"  y1="195" x2="357" y2="195" stroke="#C8A96E" stroke-width=".3" stroke-opacity=".12"/>
-          <line x1="90"  y1="90"  x2="300" y2="300" stroke="#C8A96E" stroke-width=".3" stroke-opacity=".08"/>
-          <line x1="300" y1="90"  x2="90"  y2="300" stroke="#C8A96E" stroke-width=".3" stroke-opacity=".08"/>
-          <line x1="195" y1="12" x2="195" y2="32" stroke="#C8A96E" stroke-width="1"  stroke-opacity=".7"/>
-          <line x1="195" y1="358" x2="195" y2="378" stroke="#C8A96E" stroke-width="1" stroke-opacity=".7"/>
-          <line x1="12"  y1="195" x2="32"  y2="195" stroke="#C8A96E" stroke-width="1" stroke-opacity=".7"/>
-          <line x1="358" y1="195" x2="378" y2="195" stroke="#C8A96E" stroke-width="1" stroke-opacity=".7"/>
-          <polygon points="195,48 188,195 195,180 202,195" fill="#C8A96E" fill-opacity=".92"/>
-          <polygon points="195,342 188,195 195,210 202,195" fill="#C8A96E" fill-opacity=".28"/>
-          <text x="195" y="46"  font-family="Cormorant Garamond, serif" font-size="15" fill="#C8A96E" fill-opacity=".9" text-anchor="middle" dominant-baseline="auto">N</text>
-          <text x="195" y="382" font-family="Cormorant Garamond, serif" font-size="15" fill="#C8A96E" fill-opacity=".55" text-anchor="middle" dominant-baseline="hanging">S</text>
-          <text x="383" y="200" font-family="Cormorant Garamond, serif" font-size="15" fill="#C8A96E" fill-opacity=".55" text-anchor="start"  dominant-baseline="middle">E</text>
-          <text x="7"   y="200" font-family="Cormorant Garamond, serif" font-size="15" fill="#C8A96E" fill-opacity=".55" text-anchor="end"    dominant-baseline="middle">W</text>
-          <circle cx="195" cy="195" r="4" fill="#C8A96E" fill-opacity=".65"/>
-          <circle cx="195" cy="195" r="1.5" fill="#C8A96E"/>
+          <!-- Static rings -->
+          <circle cx="195" cy="195" r="155" stroke="#C4A098" stroke-width=".5" stroke-opacity=".18"/>
+          <circle cx="195" cy="195" r="110" stroke="#C8A96E" stroke-width=".4" stroke-opacity=".14"/>
+          <circle cx="195" cy="195" r="65"  stroke="#C4A098" stroke-width=".4" stroke-opacity=".2"/>
+          <circle cx="195" cy="195" r="28"  stroke="#C8A96E" stroke-width=".4" stroke-opacity=".2"/>
+          <!-- 8 outer petals (gold) -->
+          <path d="M195 195 Q208 162 195 132 Q182 162 195 195 Z" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55" fill="rgba(200,169,110,.03)"/>
+          <path d="M195 195 Q208 162 195 132 Q182 162 195 195 Z" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55" fill="rgba(200,169,110,.03)" transform="rotate(45,195,195)"/>
+          <path d="M195 195 Q208 162 195 132 Q182 162 195 195 Z" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55" fill="rgba(200,169,110,.03)" transform="rotate(90,195,195)"/>
+          <path d="M195 195 Q208 162 195 132 Q182 162 195 195 Z" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55" fill="rgba(200,169,110,.03)" transform="rotate(135,195,195)"/>
+          <path d="M195 195 Q208 162 195 132 Q182 162 195 195 Z" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55" fill="rgba(200,169,110,.03)" transform="rotate(180,195,195)"/>
+          <path d="M195 195 Q208 162 195 132 Q182 162 195 195 Z" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55" fill="rgba(200,169,110,.03)" transform="rotate(225,195,195)"/>
+          <path d="M195 195 Q208 162 195 132 Q182 162 195 195 Z" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55" fill="rgba(200,169,110,.03)" transform="rotate(270,195,195)"/>
+          <path d="M195 195 Q208 162 195 132 Q182 162 195 195 Z" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55" fill="rgba(200,169,110,.03)" transform="rotate(315,195,195)"/>
+          <!-- 8 inner petals (rose) rotated 22.5° offset -->
+          <path d="M195 195 Q201 178 195 164 Q189 178 195 195 Z" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5" fill="rgba(196,160,152,.04)" transform="rotate(22.5,195,195)"/>
+          <path d="M195 195 Q201 178 195 164 Q189 178 195 195 Z" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5" fill="rgba(196,160,152,.04)" transform="rotate(67.5,195,195)"/>
+          <path d="M195 195 Q201 178 195 164 Q189 178 195 195 Z" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5" fill="rgba(196,160,152,.04)" transform="rotate(112.5,195,195)"/>
+          <path d="M195 195 Q201 178 195 164 Q189 178 195 195 Z" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5" fill="rgba(196,160,152,.04)" transform="rotate(157.5,195,195)"/>
+          <path d="M195 195 Q201 178 195 164 Q189 178 195 195 Z" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5" fill="rgba(196,160,152,.04)" transform="rotate(202.5,195,195)"/>
+          <path d="M195 195 Q201 178 195 164 Q189 178 195 195 Z" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5" fill="rgba(196,160,152,.04)" transform="rotate(247.5,195,195)"/>
+          <path d="M195 195 Q201 178 195 164 Q189 178 195 195 Z" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5" fill="rgba(196,160,152,.04)" transform="rotate(292.5,195,195)"/>
+          <path d="M195 195 Q201 178 195 164 Q189 178 195 195 Z" stroke="#C4A098" stroke-width=".7" stroke-opacity=".5" fill="rgba(196,160,152,.04)" transform="rotate(337.5,195,195)"/>
+          <!-- Center -->
+          <circle cx="195" cy="195" r="5" stroke="#C8A96E" stroke-width=".6" stroke-opacity=".5" fill="rgba(200,169,110,.08)"/>
+          <circle cx="195" cy="195" r="1.8" fill="#C8A96E" fill-opacity=".7"/>
         </svg>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ NEWSLETTER ════════════════════════════════════════════════ -->
+<!-- ═══ NEWSLETTER ══════════════════════════════════════════ -->
 <section id="newsletter" class="section-pad">
   <div class="newsletter-inner">
     <p class="section-label reveal">Stay Close</p>
@@ -1057,7 +823,7 @@
   </div>
 </section>
 
-<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<!-- ═══ FOOTER ═════════════════════════════════════════════ -->
 <footer>
   <div class="footer-inner">
     <span class="footer-logo">FARBOUND</span>
@@ -1073,14 +839,12 @@
 </footer>
 
 <script>
-  // ── Navbar scroll ──────────────────────────────────────────────
+  // Navbar scroll
   const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
 
-  // ── Mobile nav ─────────────────────────────────────────────────
-  const toggle   = document.getElementById('navToggle');
+  // Mobile nav
+  const toggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   toggle.addEventListener('click', () => {
     const open = navLinks.classList.toggle('open');
@@ -1093,36 +857,35 @@
     document.body.style.overflow = '';
   }));
 
-  // ── Smooth scroll ──────────────────────────────────────────────
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (!target) return;
+      const t = document.querySelector(a.getAttribute('href'));
+      if (!t) return;
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 
-  // ── Scroll reveal ──────────────────────────────────────────────
+  // Scroll reveal
   const io = new IntersectionObserver(
     entries => entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); }),
     { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // ── Collection view switching ──────────────────────────────────
+  // Collection view switching
   const genderSelect = document.getElementById('genderSelect');
   const womenView    = document.getElementById('womenView');
   const menView      = document.getElementById('menView');
 
   function showProducts(view) {
-    // fade out gender select
     genderSelect.style.transition = 'opacity .35s ease';
     genderSelect.style.opacity    = '0';
     setTimeout(() => {
       genderSelect.style.display = 'none';
-      view.style.display         = 'block';
-      view.offsetHeight; // reflow
+      view.style.display = 'block';
+      view.offsetHeight;
       view.style.transition = 'opacity .35s ease';
       view.classList.add('active');
       setTimeout(() => view.classList.add('visible'), 20);
@@ -1149,22 +912,15 @@
   }
 
   document.querySelectorAll('.gender-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const view = card.dataset.target === 'women' ? womenView : menView;
-      showProducts(view);
-    });
+    card.addEventListener('click', () => showProducts(card.dataset.target === 'women' ? womenView : menView));
   });
-
   document.getElementById('backFromWomen').addEventListener('click', showGender);
   document.getElementById('backFromMen').addEventListener('click', showGender);
-
-  // Reset to gender select when clicking Collection nav link
   document.getElementById('navCollection').addEventListener('click', () => {
-    const anyActive = womenView.classList.contains('active') || menView.classList.contains('active');
-    if (anyActive) showGender();
+    if (womenView.classList.contains('active') || menView.classList.contains('active')) showGender();
   });
 
-  // ── Newsletter ─────────────────────────────────────────────────
+  // Newsletter
   document.getElementById('nlForm').addEventListener('submit', e => {
     e.preventDefault();
     const btn = document.getElementById('nlBtn');
