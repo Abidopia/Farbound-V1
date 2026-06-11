@@ -11,16 +11,15 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg:           #0A0A08;
-      --surface:      #101010;
-      --surface-2:    #0e0e0c;
-      --gold:         #C8A96E;
-      --gold-glow:    rgba(200, 169, 110, 0.18);
-      --gold-border:  rgba(200, 169, 110, 0.28);
-      --gold-subtle:  rgba(200, 169, 110, 0.08);
-      --cream:        #F0E8D8;
-      --cream-dim:    rgba(240, 232, 216, 0.58);
-      --cream-muted:  rgba(240, 232, 216, 0.32);
+      --bg:          #0A0A08;
+      --surface:     #101010;
+      --surface-2:   #0e0e0c;
+      --gold:        #C8A96E;
+      --gold-border: rgba(200,169,110,.28);
+      --gold-dim:    rgba(200,169,110,.1);
+      --cream:       #F0E8D8;
+      --cream-dim:   rgba(240,232,216,.58);
+      --cream-muted: rgba(240,232,216,.32);
     }
 
     html { scroll-behavior: smooth; }
@@ -35,12 +34,11 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ─── SCROLLBAR ─────────────────────────────────── */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--gold-border); border-radius: 2px; }
 
-    /* ─── NAVBAR ────────────────────────────────────── */
+    /* ─── NAVBAR ────────────────────────────────────────────── */
     #navbar {
       position: fixed;
       inset: 0 0 auto 0;
@@ -54,12 +52,11 @@
     }
     #navbar.scrolled {
       padding: 1.1rem 4rem;
-      background: rgba(10, 10, 8, 0.82);
+      background: rgba(10,10,8,.85);
       backdrop-filter: blur(22px);
       -webkit-backdrop-filter: blur(22px);
       border-bottom-color: var(--gold-border);
     }
-
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.45rem;
@@ -68,7 +65,6 @@
       color: var(--gold);
       text-decoration: none;
     }
-
     .nav-links {
       display: flex;
       gap: 3rem;
@@ -87,10 +83,8 @@
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -3px;
-      left: 0;
-      width: 0;
-      height: 1px;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
       background: var(--gold);
       transition: width .35s ease;
     }
@@ -109,8 +103,7 @@
     }
     .nav-toggle span {
       display: block;
-      width: 22px;
-      height: 1px;
+      width: 22px; height: 1px;
       background: var(--cream);
       transition: all .35s ease;
     }
@@ -118,7 +111,7 @@
     .nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .nav-toggle.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-    /* ─── HERO ──────────────────────────────────────── */
+    /* ─── HERO ──────────────────────────────────────────────── */
     #hero {
       position: relative;
       min-height: 100vh;
@@ -129,10 +122,8 @@
       padding: 7rem 2rem 5rem;
       overflow: hidden;
     }
-
     .hero-bg {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background:
         radial-gradient(ellipse 70% 55% at 50% 42%, rgba(200,169,110,.09) 0%, transparent 65%),
         radial-gradient(ellipse 35% 35% at 18% 82%, rgba(200,169,110,.04) 0%, transparent 55%),
@@ -143,7 +134,7 @@
       border-radius: 50%;
       border: 1px solid rgba(200,169,110,.06);
       top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%,-50%);
       pointer-events: none;
     }
     .hero-ring:nth-child(1) { width: 700px; height: 700px; }
@@ -155,7 +146,6 @@
       z-index: 1;
       max-width: 820px;
     }
-
     .hero-eyebrow {
       font-size: .62rem;
       letter-spacing: .45em;
@@ -165,32 +155,25 @@
       opacity: 0;
       animation: fadeUp .9s ease .25s forwards;
     }
-
     .hero-headline {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(3.2rem, 8.5vw, 6.8rem);
       font-weight: 300;
       line-height: 1.04;
-      letter-spacing: -.01em;
       color: var(--cream);
       margin-bottom: 1.75rem;
       opacity: 0;
       animation: fadeUp .9s ease .45s forwards;
     }
-    .hero-headline em {
-      font-style: italic;
-      color: var(--gold);
-    }
+    .hero-headline em { font-style: italic; color: var(--gold); }
 
     .hero-divider {
-      width: 1px;
-      height: 32px;
+      width: 1px; height: 32px;
       background: linear-gradient(to bottom, var(--gold), transparent);
       margin: 0 auto 1.75rem;
       opacity: 0;
       animation: fadeIn .9s ease .6s forwards;
     }
-
     .hero-sub {
       font-size: .88rem;
       color: var(--cream-dim);
@@ -201,12 +184,10 @@
       opacity: 0;
       animation: fadeUp .9s ease .65s forwards;
     }
-
     .hero-cta {
       opacity: 0;
       animation: fadeUp .9s ease .85s forwards;
     }
-
     .btn-primary {
       position: relative;
       display: inline-block;
@@ -238,8 +219,7 @@
 
     .hero-scroll-hint {
       position: absolute;
-      bottom: 2.8rem;
-      left: 50%;
+      bottom: 2.8rem; left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
@@ -255,13 +235,12 @@
       color: var(--cream-muted);
     }
     .scroll-bar {
-      width: 1px;
-      height: 42px;
+      width: 1px; height: 42px;
       background: linear-gradient(to bottom, var(--gold) 0%, transparent 100%);
       animation: scrollPulse 2.2s ease-in-out infinite;
     }
 
-    /* ─── SHARED SECTION ────────────────────────────── */
+    /* ─── SHARED ────────────────────────────────────────────── */
     .section-pad { padding: 7rem 4rem; }
 
     .section-label {
@@ -280,7 +259,6 @@
     }
     .section-title em { font-style: italic; color: var(--gold); }
 
-    /* ─── REVEAL ANIMATIONS ─────────────────────────── */
     .reveal {
       opacity: 0;
       transform: translateY(28px);
@@ -292,32 +270,144 @@
     .delay-3 { transition-delay: .3s; }
     .delay-4 { transition-delay: .42s; }
 
-    /* ─── COLLECTION ────────────────────────────────── */
-    #collection {
-      background: var(--bg);
-    }
-    .collection-header {
-      text-align: center;
-      margin-bottom: 4.5rem;
-    }
-    .collection-header .section-title { margin-top: .5rem; }
+    /* ─── COLLECTION — GENDER SELECT ────────────────────────── */
+    #collection { background: var(--bg); }
 
-    .cards-grid {
+    .col-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .gender-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1.25rem;
-      max-width: 1400px;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 900px;
       margin: 0 auto;
     }
-    @media (max-width: 1300px) {
-      .cards-grid { grid-template-columns: repeat(4, 1fr); }
+
+    .gender-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid rgba(200,169,110,.15);
+      padding: 4rem 2.5rem 3.5rem;
+      text-align: center;
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform .42s cubic-bezier(.2,0,0,1), border-color .42s ease, box-shadow .42s ease;
+    }
+    .gender-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 120% 80% at 50% 0%, rgba(200,169,110,.07) 0%, transparent 65%);
+      opacity: 0;
+      transition: opacity .42s ease;
+    }
+    .gender-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+      box-shadow: 0 0 40px rgba(200,169,110,.14), 0 24px 60px rgba(0,0,0,.4);
+    }
+    .gender-card:hover::before { opacity: 1; }
+
+    .gender-count {
+      font-size: .6rem;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+    .gender-icon {
+      margin: 0 auto 2rem;
+      opacity: .45;
+      transition: opacity .4s ease;
+    }
+    .gender-card:hover .gender-icon { opacity: .8; }
+
+    .gender-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      letter-spacing: .04em;
+      color: var(--cream);
+      margin-bottom: .5rem;
+    }
+    .gender-sub {
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      margin-bottom: 2.5rem;
+    }
+    .gender-arrow {
+      display: inline-block;
+      font-size: .62rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(200,169,110,.3);
+      padding-bottom: 3px;
+      transition: letter-spacing .3s ease, border-color .3s ease;
+    }
+    .gender-card:hover .gender-arrow {
+      letter-spacing: .3em;
+      border-color: var(--gold);
+    }
+
+    /* ─── COLLECTION — PRODUCTS VIEW ────────────────────────── */
+    .products-view {
+      display: none;
+      opacity: 0;
+      transition: opacity .45s ease;
+    }
+    .products-view.active {
+      display: block;
+    }
+    .products-view.visible {
+      opacity: 1;
+    }
+
+    .products-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .62rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      background: none;
+      border: 1px solid rgba(200,169,110,.2);
+      padding: .65rem 1.2rem;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      transition: color .3s ease, border-color .3s ease;
+      white-space: nowrap;
+      margin-top: .3rem;
+    }
+    .back-btn:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* ─── PRODUCT CARDS ─────────────────────────────────────── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      max-width: 1300px;
+      margin: 0 auto;
     }
 
     .card {
       position: relative;
       background: var(--surface);
       border: 1px solid rgba(200,169,110,.12);
-      padding: 2.5rem 2.2rem;
+      padding: 2rem 1.75rem;
       cursor: pointer;
       transition:
         transform .42s cubic-bezier(.2,0,0,1),
@@ -326,32 +416,30 @@
       overflow: hidden;
     }
     .card-glow {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: radial-gradient(ellipse 100% 70% at 50% 0%, rgba(200,169,110,.06) 0%, transparent 70%);
       opacity: 0;
       transition: opacity .42s ease;
       pointer-events: none;
     }
     .card:hover {
-      transform: translateY(-9px);
+      transform: translateY(-8px);
       border-color: var(--gold);
       box-shadow:
-        0 0 0 1px rgba(200,169,110,.18),
-        0 0 40px rgba(200,169,110,.14),
-        0 24px 60px rgba(0,0,0,.45);
+        0 0 0 1px rgba(200,169,110,.15),
+        0 0 36px rgba(200,169,110,.13),
+        0 20px 50px rgba(0,0,0,.4);
     }
     .card:hover .card-glow { opacity: 1; }
 
     .card-num {
-      font-size: .6rem;
-      letter-spacing: .3em;
+      font-size: .58rem;
+      letter-spacing: .28em;
       color: var(--gold);
-      margin-bottom: 2.2rem;
+      margin-bottom: 1.5rem;
     }
-
     .card-bottle {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       opacity: .45;
       transition: opacity .42s ease;
     }
@@ -359,58 +447,54 @@
 
     .card-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.9rem;
+      font-size: 1.55rem;
       font-weight: 400;
       color: var(--cream);
-      letter-spacing: .01em;
-      margin-bottom: .5rem;
+      margin-bottom: .4rem;
     }
     .card-character {
-      font-size: .65rem;
-      letter-spacing: .18em;
+      font-size: .6rem;
+      letter-spacing: .16em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.2rem;
     }
-
     .notes-heading {
-      font-size: .56rem;
-      letter-spacing: .28em;
+      font-size: .54rem;
+      letter-spacing: .25em;
       text-transform: uppercase;
       color: var(--cream-muted);
-      margin-bottom: .6rem;
+      margin-bottom: .5rem;
     }
     .notes-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: .35rem;
-      margin-bottom: 2rem;
+      gap: .3rem;
+      margin-bottom: 1.4rem;
     }
     .pill {
-      font-size: .62rem;
-      padding: .25rem .7rem;
+      font-size: .58rem;
+      padding: .22rem .6rem;
       border: 1px solid rgba(200,169,110,.2);
       color: var(--cream-dim);
-      letter-spacing: .06em;
-      border-radius: 0;
+      letter-spacing: .05em;
     }
-
     .card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: 1.4rem;
+      padding-top: 1.2rem;
       border-top: 1px solid rgba(200,169,110,.1);
     }
     .card-price {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       font-weight: 400;
       color: var(--gold);
     }
     .card-action {
-      font-size: .6rem;
-      letter-spacing: .2em;
+      font-size: .58rem;
+      letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--cream-muted);
       background: none;
@@ -418,12 +502,12 @@
       cursor: pointer;
       font-family: 'Inter', sans-serif;
       font-weight: 400;
-      transition: color .3s ease, letter-spacing .3s ease;
+      transition: color .3s ease;
       padding: 0;
     }
-    .card:hover .card-action { color: var(--gold); letter-spacing: .26em; }
+    .card:hover .card-action { color: var(--gold); }
 
-    /* ─── STORY ─────────────────────────────────────── */
+    /* ─── STORY ─────────────────────────────────────────────── */
     #story {
       background: var(--surface-2);
       border-top: 1px solid rgba(200,169,110,.07);
@@ -437,16 +521,12 @@
       max-width: 1120px;
       margin: 0 auto;
     }
-
-    .story-section-title { margin: .5rem 0 1.6rem; }
-
     .story-p {
       font-size: .88rem;
       color: var(--cream-dim);
       line-height: 1.95;
       margin-bottom: 1.2rem;
     }
-
     .story-stats {
       display: flex;
       gap: 3rem;
@@ -468,40 +548,23 @@
       text-transform: uppercase;
       color: var(--cream-muted);
     }
-
-    /* Compass visual */
     .story-visual {
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .compass-wrap {
-      position: relative;
-      width: 390px;
-      height: 390px;
-    }
+    .compass-wrap { width: 390px; height: 390px; }
     .compass-wrap svg { width: 100%; height: 100%; }
     .compass-outer-ring {
       animation: rotateSlow 120s linear infinite;
       transform-origin: 195px 195px;
     }
 
-    /* ─── NEWSLETTER ────────────────────────────────── */
-    #newsletter {
-      background: var(--bg);
-      text-align: center;
-    }
-    .newsletter-inner {
-      max-width: 520px;
-      margin: 0 auto;
-    }
+    /* ─── NEWSLETTER ────────────────────────────────────────── */
+    #newsletter { background: var(--bg); text-align: center; }
+    .newsletter-inner { max-width: 520px; margin: 0 auto; }
     .newsletter-inner .section-title { margin: .5rem 0 .75rem; }
-    .nl-sub {
-      font-size: .84rem;
-      color: var(--cream-dim);
-      margin-bottom: 2.5rem;
-    }
-
+    .nl-sub { font-size: .84rem; color: var(--cream-dim); margin-bottom: 2.5rem; }
     .nl-form {
       display: flex;
       border: 1px solid var(--gold-border);
@@ -515,8 +578,7 @@
     .nl-input {
       flex: 1;
       background: transparent;
-      border: none;
-      outline: none;
+      border: none; outline: none;
       padding: 1rem 1.4rem;
       color: var(--cream);
       font-family: 'Inter', sans-serif;
@@ -525,7 +587,6 @@
       letter-spacing: .04em;
     }
     .nl-input::placeholder { color: var(--cream-muted); }
-
     .nl-btn {
       background: var(--gold);
       border: none;
@@ -538,12 +599,11 @@
       text-transform: uppercase;
       cursor: pointer;
       white-space: nowrap;
-      transition: background .3s ease, letter-spacing .3s ease;
+      transition: background .3s ease;
       min-width: 120px;
     }
     .nl-btn:hover { background: #d4b87a; }
-    .nl-btn.success { background: rgba(200,169,110,.35); letter-spacing: .06em; }
-
+    .nl-btn.success { background: rgba(200,169,110,.35); }
     .nl-note {
       font-size: .62rem;
       color: var(--cream-muted);
@@ -551,7 +611,7 @@
       letter-spacing: .06em;
     }
 
-    /* ─── FOOTER ────────────────────────────────────── */
+    /* ─── FOOTER ────────────────────────────────────────────── */
     footer {
       padding: 2.8rem 4rem;
       background: var(--bg);
@@ -588,13 +648,9 @@
       transition: color .3s ease;
     }
     .footer-links a:hover { color: var(--gold); }
-    .footer-copy {
-      font-size: .62rem;
-      color: var(--cream-muted);
-      letter-spacing: .07em;
-    }
+    .footer-copy { font-size: .62rem; color: var(--cream-muted); letter-spacing: .07em; }
 
-    /* ─── KEYFRAMES ─────────────────────────────────── */
+    /* ─── KEYFRAMES ─────────────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -604,32 +660,31 @@
       to   { opacity: 1; }
     }
     @keyframes scrollPulse {
-      0%, 100% { opacity: 1; transform: scaleY(1) translateY(0); }
-      50%       { opacity: .3; transform: scaleY(.5) translateY(4px); }
+      0%,100% { opacity: 1; }
+      50%      { opacity: .3; }
     }
     @keyframes rotateSlow {
       from { transform: rotate(0deg); }
       to   { transform: rotate(360deg); }
     }
 
-    /* ─── RESPONSIVE ────────────────────────────────── */
+    /* ─── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 1200px) {
+      .cards-grid { grid-template-columns: repeat(3, 1fr); }
+    }
     @media (max-width: 1024px) {
       .section-pad { padding: 5.5rem 3rem; }
       #navbar, #navbar.scrolled { padding-left: 3rem; padding-right: 3rem; }
-      .cards-grid { grid-template-columns: repeat(3, 1fr); }
       .story-grid { gap: 3.5rem; }
       .compass-wrap { width: 310px; height: 310px; }
     }
-
     @media (max-width: 768px) {
       #navbar { padding: 1.4rem 1.5rem; }
       #navbar.scrolled { padding: 1rem 1.5rem; }
-
       .nav-links {
         position: fixed;
         top: 0; right: -100%;
-        height: 100vh;
-        width: 260px;
+        height: 100vh; width: 260px;
         background: rgba(10,10,8,.97);
         flex-direction: column;
         justify-content: center;
@@ -643,21 +698,16 @@
       .nav-links.open { right: 0; }
       .nav-links a { font-size: .82rem; }
       .nav-toggle { display: flex; }
-
       .section-pad { padding: 4.5rem 1.5rem; }
       footer { padding: 2.5rem 1.5rem; }
-
-      .cards-grid { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
-
+      .gender-grid { grid-template-columns: 1fr; max-width: 420px; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
       .story-grid { grid-template-columns: 1fr; gap: 3rem; }
       .story-visual { order: -1; }
       .compass-wrap { width: 250px; height: 250px; }
-
       .story-stats { flex-wrap: wrap; gap: 2rem; }
-
-      .footer-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
     }
-
     @media (max-width: 480px) {
       .hero-headline { font-size: 2.9rem; }
       .nl-form { flex-direction: column; }
@@ -672,7 +722,7 @@
 <nav id="navbar">
   <a href="#hero" class="nav-logo">FARBOUND</a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#collection">Collection</a></li>
+    <li><a href="#collection" id="navCollection">Collection</a></li>
     <li><a href="#story">Story</a></li>
     <li><a href="#newsletter">Shop</a></li>
   </ul>
@@ -687,22 +737,15 @@
   <div class="hero-ring"></div>
   <div class="hero-ring"></div>
   <div class="hero-ring"></div>
-
   <div class="hero-content">
     <p class="hero-eyebrow">Eau de Parfum &nbsp;·&nbsp; Est. 2024</p>
-    <h1 class="hero-headline">
-      Scents That<br><em>Travel With You</em>
-    </h1>
+    <h1 class="hero-headline">Scents That<br><em>Travel With You</em></h1>
     <div class="hero-divider"></div>
-    <p class="hero-sub">
-      Rare ingredients gathered from the world's most remote places,
-      bottled for those who carry the spirit of exploration wherever they go.
-    </p>
+    <p class="hero-sub">Rare ingredients gathered from the world's most remote places, bottled for those who carry the spirit of exploration wherever they go.</p>
     <div class="hero-cta">
       <a href="#collection" class="btn-primary"><span>Explore Collection</span></a>
     </div>
   </div>
-
   <div class="hero-scroll-hint">
     <div class="scroll-bar"></div>
     <span>Scroll</span>
@@ -711,499 +754,292 @@
 
 <!-- ═══ COLLECTION ════════════════════════════════════════════════ -->
 <section id="collection" class="section-pad">
-  <div class="collection-header reveal">
-    <p class="section-label">The Laverne Line</p>
-    <h2 class="section-title">Fifteen Fragrances,&nbsp;<em>One Vision</em></h2>
+
+  <!-- Gender Selection -->
+  <div id="genderSelect">
+    <div class="col-header reveal">
+      <p class="section-label">The Laverne Line</p>
+      <h2 class="section-title">Choose Your&nbsp;<em>Collection</em></h2>
+    </div>
+    <div class="gender-grid">
+
+      <!-- Women -->
+      <div class="gender-card reveal delay-1" data-target="women">
+        <p class="gender-count">08 Fragrances</p>
+        <svg class="gender-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".6"/>
+          <circle cx="32" cy="32" r="20" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+          <path d="M32 12 C32 12, 40 22, 40 32 C40 42, 32 52, 32 52 C32 52, 24 42, 24 32 C24 22, 32 12, 32 12Z" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".7" fill="none"/>
+          <path d="M12 32 C12 32, 22 24, 32 24 C42 24, 52 32, 52 32 C52 32, 42 40, 32 40 C22 40, 12 32, 12 32Z" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".7" fill="none"/>
+          <circle cx="32" cy="32" r="2.5" fill="#C8A96E" fill-opacity=".6"/>
+        </svg>
+        <h3 class="gender-title">Pour Femme</h3>
+        <p class="gender-sub">Women's Collection</p>
+        <span class="gender-arrow">Explore →</span>
+      </div>
+
+      <!-- Men -->
+      <div class="gender-card reveal delay-2" data-target="men">
+        <p class="gender-count">07 Fragrances</p>
+        <svg class="gender-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="60" height="60" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".6"/>
+          <rect x="12" y="12" width="40" height="40" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+          <line x1="2"  y1="2"  x2="62" y2="62" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".4"/>
+          <line x1="62" y1="2"  x2="2"  y2="62" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".4"/>
+          <line x1="32" y1="2"  x2="32" y2="62" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".3"/>
+          <line x1="2"  y1="32" x2="62" y2="32" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".3"/>
+          <rect x="27" y="27" width="10" height="10" fill="#C8A96E" fill-opacity=".5"/>
+        </svg>
+        <h3 class="gender-title">Pour Homme</h3>
+        <p class="gender-sub">Men's Collection</p>
+        <span class="gender-arrow">Explore →</span>
+      </div>
+
+    </div>
   </div>
 
-  <div class="cards-grid">
-
-    <!-- 01 -->
-    <div class="card reveal delay-1">
-      <div class="card-glow"></div>
-      <p class="card-num">01 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Noir Absolu</h3>
-      <p class="card-character">Smoky &nbsp;·&nbsp; Resinous</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Oud Wood</span>
-        <span class="pill">Black Amber</span>
-        <span class="pill">Vetiver</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$180</span>
-        <button class="card-action">Add →</button>
+  <!-- Women's Products -->
+  <div class="products-view" id="womenView">
+    <div class="products-header">
+      <button class="back-btn" id="backFromWomen">← Collections</button>
+      <div>
+        <p class="section-label">Pour Femme</p>
+        <h2 class="section-title">Women's&nbsp;<em>Collection</em></h2>
       </div>
     </div>
+    <div class="cards-grid">
 
-    <!-- 02 -->
-    <div class="card reveal delay-2">
-      <div class="card-glow"></div>
-      <p class="card-num">02 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Santal Dusk</h3>
-      <p class="card-character">Warm &nbsp;·&nbsp; Earthy</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Sandalwood</span>
-        <span class="pill">Vanilla</span>
-        <span class="pill">Cardamom</span>
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">W–01 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Rose Éternelle</h3>
+        <p class="card-character">Floral · Powdery</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Bulgarian Rose</span><span class="pill">Patchouli</span><span class="pill">Iris</span></div>
+        <div class="card-footer"><span class="card-price">$195</span><button class="card-action">Add →</button></div>
       </div>
-      <div class="card-footer">
-        <span class="card-price">$165</span>
-        <button class="card-action">Add →</button>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">W–02 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Jasmin Minuit</h3>
+        <p class="card-character">Floral · Sensual</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Jasmine</span><span class="pill">Tuberose</span><span class="pill">Musk</span></div>
+        <div class="card-footer"><span class="card-price">$180</span><button class="card-action">Add →</button></div>
       </div>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">W–03 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Iris Sauvage</h3>
+        <p class="card-character">Powdery · Earthy</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Iris Root</span><span class="pill">Violet</span><span class="pill">Vetiver</span></div>
+        <div class="card-footer"><span class="card-price">$170</span><button class="card-action">Add →</button></div>
+      </div>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">W–04 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Musc Blanc</h3>
+        <p class="card-character">Clean · Airy</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">White Musk</span><span class="pill">Cashmere</span><span class="pill">Sandalwood</span></div>
+        <div class="card-footer"><span class="card-price">$170</span><button class="card-action">Add →</button></div>
+      </div>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">W–05 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Fleur d'Ébène</h3>
+        <p class="card-character">Floral · Woody</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Ebony Wood</span><span class="pill">Gardenia</span><span class="pill">Amber</span></div>
+        <div class="card-footer"><span class="card-price">$195</span><button class="card-action">Add →</button></div>
+      </div>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">W–06 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Bergamote Est</h3>
+        <p class="card-character">Fresh · Citrus</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Bergamot</span><span class="pill">Green Tea</span><span class="pill">Neroli</span></div>
+        <div class="card-footer"><span class="card-price">$160</span><button class="card-action">Add →</button></div>
+      </div>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">W–07 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Santal Dusk</h3>
+        <p class="card-character">Warm · Intimate</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Sandalwood</span><span class="pill">Vanilla</span><span class="pill">Cardamom</span></div>
+        <div class="card-footer"><span class="card-price">$165</span><button class="card-action">Add →</button></div>
+      </div>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">W–08 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Ambre Voyage</h3>
+        <p class="card-character">Warm · Spiced</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Amber</span><span class="pill">Saffron</span><span class="pill">Benzoin</span></div>
+        <div class="card-footer"><span class="card-price">$175</span><button class="card-action">Add →</button></div>
+      </div>
+
     </div>
-
-    <!-- 03 -->
-    <div class="card reveal delay-3">
-      <div class="card-glow"></div>
-      <p class="card-num">03 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Rose Éternelle</h3>
-      <p class="card-character">Floral &nbsp;·&nbsp; Powdery</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Bulgarian Rose</span>
-        <span class="pill">Patchouli</span>
-        <span class="pill">Iris</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$195</span>
-        <button class="card-action">Add →</button>
-      </div>
-    </div>
-
-    <!-- 04 -->
-    <div class="card reveal delay-4">
-      <div class="card-glow"></div>
-      <p class="card-num">04 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Ambre Voyage</h3>
-      <p class="card-character">Warm &nbsp;·&nbsp; Spiced</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Amber</span>
-        <span class="pill">Saffron</span>
-        <span class="pill">Benzoin</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$175</span>
-        <button class="card-action">Add →</button>
-      </div>
-    </div>
-
-    <!-- 05 -->
-    <div class="card reveal delay-1">
-      <div class="card-glow"></div>
-      <p class="card-num">05 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Cèdre Mystique</h3>
-      <p class="card-character">Woody &nbsp;·&nbsp; Dry</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Cedarwood</span>
-        <span class="pill">Guaiac</span>
-        <span class="pill">Grey Musk</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$185</span>
-        <button class="card-action">Add →</button>
-      </div>
-    </div>
-
-    <!-- 06 -->
-    <div class="card reveal delay-2">
-      <div class="card-glow"></div>
-      <p class="card-num">06 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Oud Nomade</h3>
-      <p class="card-character">Dark &nbsp;·&nbsp; Smoky</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Oud</span>
-        <span class="pill">Rose Absolute</span>
-        <span class="pill">Labdanum</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$210</span>
-        <button class="card-action">Add →</button>
-      </div>
-    </div>
-
-    <!-- 07 -->
-    <div class="card reveal delay-3">
-      <div class="card-glow"></div>
-      <p class="card-num">07 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Iris Sauvage</h3>
-      <p class="card-character">Powdery &nbsp;·&nbsp; Earthy</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Iris Root</span>
-        <span class="pill">Violet</span>
-        <span class="pill">Vetiver</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$170</span>
-        <button class="card-action">Add →</button>
-      </div>
-    </div>
-
-    <!-- 08 -->
-    <div class="card reveal delay-4">
-      <div class="card-glow"></div>
-      <p class="card-num">08 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Vétiver Terre</h3>
-      <p class="card-character">Green &nbsp;·&nbsp; Smoky</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Vetiver</span>
-        <span class="pill">Oakmoss</span>
-        <span class="pill">Tobacco</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$165</span>
-        <button class="card-action">Add →</button>
-      </div>
-    </div>
-
-    <!-- 09 -->
-    <div class="card reveal delay-1">
-      <div class="card-glow"></div>
-      <p class="card-num">09 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Jasmin Minuit</h3>
-      <p class="card-character">Floral &nbsp;·&nbsp; Sensual</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Jasmine</span>
-        <span class="pill">Tuberose</span>
-        <span class="pill">Musk</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$180</span>
-        <button class="card-action">Add →</button>
-      </div>
-    </div>
-
-    <!-- 10 -->
-    <div class="card reveal delay-2">
-      <div class="card-glow"></div>
-      <p class="card-num">10 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Patchouli Atlas</h3>
-      <p class="card-character">Deep &nbsp;·&nbsp; Resinous</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Patchouli</span>
-        <span class="pill">Myrrh</span>
-        <span class="pill">Vanilla</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$175</span>
-        <button class="card-action">Add →</button>
-      </div>
-    </div>
-
-    <!-- 11 -->
-    <div class="card reveal delay-3">
-      <div class="card-glow"></div>
-      <p class="card-num">11 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Bergamote Est</h3>
-      <p class="card-character">Fresh &nbsp;·&nbsp; Citrus</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Bergamot</span>
-        <span class="pill">Green Tea</span>
-        <span class="pill">Neroli</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$160</span>
-        <button class="card-action">Add →</button>
-      </div>
-    </div>
-
-    <!-- 12 -->
-    <div class="card reveal delay-4">
-      <div class="card-glow"></div>
-      <p class="card-num">12 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Musc Blanc</h3>
-      <p class="card-character">Clean &nbsp;·&nbsp; Airy</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">White Musk</span>
-        <span class="pill">Cashmere</span>
-        <span class="pill">Sandalwood</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$170</span>
-        <button class="card-action">Add →</button>
-      </div>
-    </div>
-
-    <!-- 13 -->
-    <div class="card reveal delay-1">
-      <div class="card-glow"></div>
-      <p class="card-num">13 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Fleur d'Ébène</h3>
-      <p class="card-character">Floral &nbsp;·&nbsp; Woody</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Ebony Wood</span>
-        <span class="pill">Gardenia</span>
-        <span class="pill">Amber</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$195</span>
-        <button class="card-action">Add →</button>
-      </div>
-    </div>
-
-    <!-- 14 -->
-    <div class="card reveal delay-2">
-      <div class="card-glow"></div>
-      <p class="card-num">14 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Encens Sacré</h3>
-      <p class="card-character">Sacred &nbsp;·&nbsp; Smoky</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Frankincense</span>
-        <span class="pill">Myrrh</span>
-        <span class="pill">Incense</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$200</span>
-        <button class="card-action">Add →</button>
-      </div>
-    </div>
-
-    <!-- 15 -->
-    <div class="card reveal delay-3">
-      <div class="card-glow"></div>
-      <p class="card-num">15 &nbsp;—&nbsp; Laverne</p>
-      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
-        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
-        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
-        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
-        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
-        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
-      </svg>
-      <h3 class="card-name">Tabac Doré</h3>
-      <p class="card-character">Warm &nbsp;·&nbsp; Leathery</p>
-      <p class="notes-heading">Notes</p>
-      <div class="notes-pills">
-        <span class="pill">Tobacco</span>
-        <span class="pill">Leather</span>
-        <span class="pill">Honey</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-price">$185</span>
-        <button class="card-action">Add →</button>
-      </div>
-    </div>
-
   </div>
+
+  <!-- Men's Products -->
+  <div class="products-view" id="menView">
+    <div class="products-header">
+      <button class="back-btn" id="backFromMen">← Collections</button>
+      <div>
+        <p class="section-label">Pour Homme</p>
+        <h2 class="section-title">Men's&nbsp;<em>Collection</em></h2>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">M–01 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Noir Absolu</h3>
+        <p class="card-character">Smoky · Resinous</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Oud Wood</span><span class="pill">Black Amber</span><span class="pill">Vetiver</span></div>
+        <div class="card-footer"><span class="card-price">$180</span><button class="card-action">Add →</button></div>
+      </div>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">M–02 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Cèdre Mystique</h3>
+        <p class="card-character">Woody · Dry</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Cedarwood</span><span class="pill">Guaiac</span><span class="pill">Grey Musk</span></div>
+        <div class="card-footer"><span class="card-price">$185</span><button class="card-action">Add →</button></div>
+      </div>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">M–03 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Oud Nomade</h3>
+        <p class="card-character">Dark · Magnetic</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Oud</span><span class="pill">Rose Absolute</span><span class="pill">Labdanum</span></div>
+        <div class="card-footer"><span class="card-price">$210</span><button class="card-action">Add →</button></div>
+      </div>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">M–04 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Vétiver Terre</h3>
+        <p class="card-character">Green · Smoky</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Vetiver</span><span class="pill">Oakmoss</span><span class="pill">Tobacco</span></div>
+        <div class="card-footer"><span class="card-price">$165</span><button class="card-action">Add →</button></div>
+      </div>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">M–05 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Patchouli Atlas</h3>
+        <p class="card-character">Deep · Resinous</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Patchouli</span><span class="pill">Myrrh</span><span class="pill">Vanilla</span></div>
+        <div class="card-footer"><span class="card-price">$175</span><button class="card-action">Add →</button></div>
+      </div>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">M–06 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Encens Sacré</h3>
+        <p class="card-character">Sacred · Smoky</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Frankincense</span><span class="pill">Myrrh</span><span class="pill">Incense</span></div>
+        <div class="card-footer"><span class="card-price">$200</span><button class="card-action">Add →</button></div>
+      </div>
+
+      <div class="card">
+        <div class="card-glow"></div>
+        <p class="card-num">M–07 · Laverne</p>
+        <svg class="card-bottle" width="36" height="52" viewBox="0 0 48 68" fill="none"><rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/><rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/><rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/><line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/><circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/><circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/></svg>
+        <h3 class="card-name">Tabac Doré</h3>
+        <p class="card-character">Warm · Leathery</p>
+        <p class="notes-heading">Notes</p>
+        <div class="notes-pills"><span class="pill">Tobacco</span><span class="pill">Leather</span><span class="pill">Honey</span></div>
+        <div class="card-footer"><span class="card-price">$185</span><button class="card-action">Add →</button></div>
+      </div>
+
+    </div>
+  </div>
+
 </section>
 
-<!-- ═══ BRAND STORY ═══════════════════════════════════════════════ -->
+<!-- ═══ STORY ═════════════════════════════════════════════════════ -->
 <section id="story" class="section-pad">
   <div class="story-grid">
-
     <div class="story-text">
       <p class="section-label reveal">Our Story</p>
-      <h2 class="section-title story-section-title reveal delay-1">
-        Born from Roads<br><em>Less Travelled</em>
-      </h2>
-      <p class="story-p reveal delay-2">
-        FARBOUND was born from a simple obsession: the way a single scent can collapse
-        the distance between who you are and where you've been. From the cedar-laced
-        bazaars of old Marrakech to the salt winds of the Faroe Islands, every fragrance
-        in our collection is a cartography of the senses.
-      </p>
-      <p class="story-p reveal delay-3">
-        We source our raw ingredients with ruthless intention — partnering with growers
-        on six continents, hand-selecting resins, florals, and woods at their peak
-        expression. The result is a perfume house that does not simply smell beautiful,
-        but feels like <em>somewhere</em>.
-      </p>
+      <h2 class="section-title reveal delay-1" style="margin:.5rem 0 1.6rem">Born from Roads<br><em>Less Travelled</em></h2>
+      <p class="story-p reveal delay-2">FARBOUND was born from a simple obsession: the way a single scent can collapse the distance between who you are and where you've been. From the cedar-laced bazaars of old Marrakech to the salt winds of the Faroe Islands, every fragrance is a cartography of the senses.</p>
+      <p class="story-p reveal delay-3">We source our raw ingredients with ruthless intention — partnering with growers on six continents, hand-selecting resins, florals, and woods at their peak expression. The result is a perfume house that does not simply smell beautiful, but feels like <em>somewhere</em>.</p>
       <div class="story-stats reveal delay-4">
-        <div class="stat">
-          <span class="stat-n">6</span>
-          <span class="stat-l">Continents</span>
-        </div>
-        <div class="stat">
-          <span class="stat-n">48+</span>
-          <span class="stat-l">Ingredients</span>
-        </div>
-        <div class="stat">
-          <span class="stat-n">∞</span>
-          <span class="stat-l">Destinations</span>
-        </div>
+        <div class="stat"><span class="stat-n">6</span><span class="stat-l">Continents</span></div>
+        <div class="stat"><span class="stat-n">48+</span><span class="stat-l">Ingredients</span></div>
+        <div class="stat"><span class="stat-n">15</span><span class="stat-l">Fragrances</span></div>
       </div>
     </div>
-
     <div class="story-visual reveal delay-2">
       <div class="compass-wrap">
         <svg viewBox="0 0 390 390" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Rotating outer text ring -->
           <g class="compass-outer-ring">
             <circle cx="195" cy="195" r="183" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".18"/>
-            <defs>
-              <path id="arcPath" d="M 195 195 m -178 0 a 178 178 0 1 1 356 0"/>
-            </defs>
+            <defs><path id="arcPath" d="M 195 195 m -178 0 a 178 178 0 1 1 356 0"/></defs>
             <text font-family="Cormorant Garamond, serif" font-size="10.5" fill="#C8A96E" fill-opacity=".35" letter-spacing="19.5">
               <textPath href="#arcPath">FARBOUND · EAU DE PARFUM · EST. 2024 · </textPath>
             </text>
           </g>
-
-          <!-- Static rings -->
           <circle cx="195" cy="195" r="162" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".22"/>
           <circle cx="195" cy="195" r="120" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".16"/>
           <circle cx="195" cy="195" r="76"  stroke="#C8A96E" stroke-width=".5" stroke-opacity=".22"/>
           <circle cx="195" cy="195" r="34"  stroke="#C8A96E" stroke-width=".5" stroke-opacity=".18"/>
-
-          <!-- Cross-hair lines -->
           <line x1="195" y1="33"  x2="195" y2="357" stroke="#C8A96E" stroke-width=".3" stroke-opacity=".12"/>
           <line x1="33"  y1="195" x2="357" y2="195" stroke="#C8A96E" stroke-width=".3" stroke-opacity=".12"/>
           <line x1="90"  y1="90"  x2="300" y2="300" stroke="#C8A96E" stroke-width=".3" stroke-opacity=".08"/>
           <line x1="300" y1="90"  x2="90"  y2="300" stroke="#C8A96E" stroke-width=".3" stroke-opacity=".08"/>
-
-          <!-- Cardinal ticks outer -->
           <line x1="195" y1="12" x2="195" y2="32" stroke="#C8A96E" stroke-width="1"  stroke-opacity=".7"/>
           <line x1="195" y1="358" x2="195" y2="378" stroke="#C8A96E" stroke-width="1" stroke-opacity=".7"/>
           <line x1="12"  y1="195" x2="32"  y2="195" stroke="#C8A96E" stroke-width="1" stroke-opacity=".7"/>
           <line x1="358" y1="195" x2="378" y2="195" stroke="#C8A96E" stroke-width="1" stroke-opacity=".7"/>
-
-          <!-- Inter-cardinal ticks -->
-          <line x1="323" y1="67"  x2="309" y2="81"  stroke="#C8A96E" stroke-width=".6" stroke-opacity=".4"/>
-          <line x1="67"  y1="67"  x2="81"  y2="81"  stroke="#C8A96E" stroke-width=".6" stroke-opacity=".4"/>
-          <line x1="323" y1="323" x2="309" y2="309" stroke="#C8A96E" stroke-width=".6" stroke-opacity=".4"/>
-          <line x1="67"  y1="323" x2="81"  y2="309" stroke="#C8A96E" stroke-width=".6" stroke-opacity=".4"/>
-
-          <!-- N arrow (gold) -->
           <polygon points="195,48 188,195 195,180 202,195" fill="#C8A96E" fill-opacity=".92"/>
-          <!-- S arrow (dim) -->
           <polygon points="195,342 188,195 195,210 202,195" fill="#C8A96E" fill-opacity=".28"/>
-
-          <!-- Cardinal labels -->
           <text x="195" y="46"  font-family="Cormorant Garamond, serif" font-size="15" fill="#C8A96E" fill-opacity=".9" text-anchor="middle" dominant-baseline="auto">N</text>
           <text x="195" y="382" font-family="Cormorant Garamond, serif" font-size="15" fill="#C8A96E" fill-opacity=".55" text-anchor="middle" dominant-baseline="hanging">S</text>
           <text x="383" y="200" font-family="Cormorant Garamond, serif" font-size="15" fill="#C8A96E" fill-opacity=".55" text-anchor="start"  dominant-baseline="middle">E</text>
           <text x="7"   y="200" font-family="Cormorant Garamond, serif" font-size="15" fill="#C8A96E" fill-opacity=".55" text-anchor="end"    dominant-baseline="middle">W</text>
-
-          <!-- Center dot -->
           <circle cx="195" cy="195" r="4" fill="#C8A96E" fill-opacity=".65"/>
           <circle cx="195" cy="195" r="1.5" fill="#C8A96E"/>
         </svg>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1214,14 +1050,7 @@
     <h2 class="section-title reveal delay-1">The World,&nbsp;<em>Delivered</em></h2>
     <p class="nl-sub reveal delay-2">New journeys, rare ingredients, and exclusive drops — straight to your inbox.</p>
     <form class="nl-form reveal delay-3" id="nlForm">
-      <input
-        type="email"
-        class="nl-input"
-        id="nlEmail"
-        placeholder="Your email address"
-        autocomplete="email"
-        required
-      />
+      <input type="email" class="nl-input" id="nlEmail" placeholder="Your email address" autocomplete="email" required />
       <button type="submit" class="nl-btn" id="nlBtn">Subscribe</button>
     </form>
     <p class="nl-note reveal delay-4">No noise. One email per month. Unsubscribe anytime.</p>
@@ -1244,31 +1073,27 @@
 </footer>
 
 <script>
-  // ── Navbar scroll state ──────────────────────────────────────────
+  // ── Navbar scroll ──────────────────────────────────────────────
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
-  // ── Mobile nav toggle ────────────────────────────────────────────
-  const toggle = document.getElementById('navToggle');
-  const links  = document.getElementById('navLinks');
-
+  // ── Mobile nav ─────────────────────────────────────────────────
+  const toggle   = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
   toggle.addEventListener('click', () => {
-    const open = links.classList.toggle('open');
+    const open = navLinks.classList.toggle('open');
     toggle.classList.toggle('active', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    toggle.classList.remove('active');
+    document.body.style.overflow = '';
+  }));
 
-  links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-  });
-
-  // ── Smooth scroll for all anchor links ──────────────────────────
+  // ── Smooth scroll ──────────────────────────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
@@ -1278,29 +1103,76 @@
     });
   });
 
-  // ── Scroll reveal (Intersection Observer) ───────────────────────
+  // ── Scroll reveal ──────────────────────────────────────────────
   const io = new IntersectionObserver(
-    entries => entries.forEach(en => {
-      if (en.isIntersecting) en.target.classList.add('visible');
-    }),
+    entries => entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); }),
     { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // ── Newsletter form ──────────────────────────────────────────────
+  // ── Collection view switching ──────────────────────────────────
+  const genderSelect = document.getElementById('genderSelect');
+  const womenView    = document.getElementById('womenView');
+  const menView      = document.getElementById('menView');
+
+  function showProducts(view) {
+    // fade out gender select
+    genderSelect.style.transition = 'opacity .35s ease';
+    genderSelect.style.opacity    = '0';
+    setTimeout(() => {
+      genderSelect.style.display = 'none';
+      view.style.display         = 'block';
+      view.offsetHeight; // reflow
+      view.style.transition = 'opacity .35s ease';
+      view.classList.add('active');
+      setTimeout(() => view.classList.add('visible'), 20);
+      document.getElementById('collection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 350);
+  }
+
+  function showGender() {
+    [womenView, menView].forEach(v => {
+      v.style.transition = 'opacity .35s ease';
+      v.style.opacity    = '0';
+      setTimeout(() => {
+        v.classList.remove('active', 'visible');
+        v.style.display  = 'none';
+        v.style.opacity  = '';
+      }, 350);
+    });
+    setTimeout(() => {
+      genderSelect.style.display = '';
+      genderSelect.offsetHeight;
+      genderSelect.style.opacity = '1';
+      document.getElementById('collection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 360);
+  }
+
+  document.querySelectorAll('.gender-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const view = card.dataset.target === 'women' ? womenView : menView;
+      showProducts(view);
+    });
+  });
+
+  document.getElementById('backFromWomen').addEventListener('click', showGender);
+  document.getElementById('backFromMen').addEventListener('click', showGender);
+
+  // Reset to gender select when clicking Collection nav link
+  document.getElementById('navCollection').addEventListener('click', () => {
+    const anyActive = womenView.classList.contains('active') || menView.classList.contains('active');
+    if (anyActive) showGender();
+  });
+
+  // ── Newsletter ─────────────────────────────────────────────────
   document.getElementById('nlForm').addEventListener('submit', e => {
     e.preventDefault();
-    const btn   = document.getElementById('nlBtn');
-    const input = document.getElementById('nlEmail');
+    const btn = document.getElementById('nlBtn');
     btn.textContent = '✦  Thank you';
     btn.classList.add('success');
-    input.value = '';
-    setTimeout(() => {
-      btn.textContent = 'Subscribe';
-      btn.classList.remove('success');
-    }, 3200);
+    document.getElementById('nlEmail').value = '';
+    setTimeout(() => { btn.textContent = 'Subscribe'; btn.classList.remove('success'); }, 3200);
   });
 </script>
-
 </body>
 </html>
