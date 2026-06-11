@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FARBOUND — Scents That Travel With You</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:           #0A0A08;
+      --surface:      #101010;
+      --surface-2:    #0e0e0c;
+      --gold:         #C8A96E;
+      --gold-glow:    rgba(200, 169, 110, 0.18);
+      --gold-border:  rgba(200, 169, 110, 0.28);
+      --gold-subtle:  rgba(200, 169, 110, 0.08);
+      --cream:        #F0E8D8;
+      --cream-dim:    rgba(240, 232, 216, 0.58);
+      --cream-muted:  rgba(240, 232, 216, 0.32);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── SCROLLBAR ─────────────────────────────────── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-border); border-radius: 2px; }
+
+    /* ─── NAVBAR ────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      padding: 1.75rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: padding .4s ease, background .4s ease, border-color .4s ease;
+      border-bottom: 1px solid transparent;
+    }
+    #navbar.scrolled {
+      padding: 1.1rem 4rem;
+      background: rgba(10, 10, 8, 0.82);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-bottom-color: var(--gold-border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 400;
+      letter-spacing: .38em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+    }
+    .nav-links a {
+      position: relative;
+      font-size: .68rem;
+      font-weight: 400;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      text-decoration: none;
+      transition: color .3s ease;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width .35s ease;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 300;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--cream);
+      transition: all .35s ease;
+    }
+    .nav-toggle.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ─── HERO ──────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 5rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 42%, rgba(200,169,110,.09) 0%, transparent 65%),
+        radial-gradient(ellipse 35% 35% at 18% 82%, rgba(200,169,110,.04) 0%, transparent 55%),
+        radial-gradient(ellipse 35% 35% at 82% 18%, rgba(200,169,110,.04) 0%, transparent 55%);
+    }
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(200,169,110,.06);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-ring:nth-child(1) { width: 700px; height: 700px; }
+    .hero-ring:nth-child(2) { width: 480px; height: 480px; border-color: rgba(200,169,110,.04); }
+    .hero-ring:nth-child(3) { width: 260px; height: 260px; }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+    }
+
+    .hero-eyebrow {
+      font-size: .62rem;
+      letter-spacing: .45em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.2rem;
+      opacity: 0;
+      animation: fadeUp .9s ease .25s forwards;
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 8.5vw, 6.8rem);
+      font-weight: 300;
+      line-height: 1.04;
+      letter-spacing: -.01em;
+      color: var(--cream);
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: fadeUp .9s ease .45s forwards;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-divider {
+      width: 1px;
+      height: 32px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      margin: 0 auto 1.75rem;
+      opacity: 0;
+      animation: fadeIn .9s ease .6s forwards;
+    }
+
+    .hero-sub {
+      font-size: .88rem;
+      color: var(--cream-dim);
+      max-width: 460px;
+      margin: 0 auto 3rem;
+      letter-spacing: .03em;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeUp .9s ease .65s forwards;
+    }
+
+    .hero-cta {
+      opacity: 0;
+      animation: fadeUp .9s ease .85s forwards;
+    }
+
+    .btn-primary {
+      position: relative;
+      display: inline-block;
+      padding: 1rem 2.6rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
+      font-weight: 400;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: transparent;
+      cursor: pointer;
+      overflow: hidden;
+      transition: color .4s ease;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: translateX(-102%);
+      transition: transform .42s cubic-bezier(.7,0,.3,1);
+    }
+    .btn-primary:hover { color: var(--bg); }
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary span { position: relative; z-index: 1; }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .55rem;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.6s forwards;
+    }
+    .hero-scroll-hint span {
+      font-size: .58rem;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+    }
+    .scroll-bar {
+      width: 1px;
+      height: 42px;
+      background: linear-gradient(to bottom, var(--gold) 0%, transparent 100%);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+
+    /* ─── SHARED SECTION ────────────────────────────── */
+    .section-pad { padding: 7rem 4rem; }
+
+    .section-label {
+      font-size: .6rem;
+      letter-spacing: .42em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .9rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.18;
+      color: var(--cream);
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    /* ─── REVEAL ANIMATIONS ─────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .85s ease, transform .85s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .1s; }
+    .delay-2 { transition-delay: .2s; }
+    .delay-3 { transition-delay: .3s; }
+    .delay-4 { transition-delay: .42s; }
+
+    /* ─── COLLECTION ────────────────────────────────── */
+    #collection {
+      background: var(--bg);
+    }
+    .collection-header {
+      text-align: center;
+      margin-bottom: 4.5rem;
+    }
+    .collection-header .section-title { margin-top: .5rem; }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid rgba(200,169,110,.12);
+      padding: 2.5rem 2.2rem;
+      cursor: pointer;
+      transition:
+        transform .42s cubic-bezier(.2,0,0,1),
+        box-shadow .42s ease,
+        border-color .42s ease;
+      overflow: hidden;
+    }
+    .card-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 100% 70% at 50% 0%, rgba(200,169,110,.06) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity .42s ease;
+      pointer-events: none;
+    }
+    .card:hover {
+      transform: translateY(-9px);
+      border-color: var(--gold);
+      box-shadow:
+        0 0 0 1px rgba(200,169,110,.18),
+        0 0 40px rgba(200,169,110,.14),
+        0 24px 60px rgba(0,0,0,.45);
+    }
+    .card:hover .card-glow { opacity: 1; }
+
+    .card-num {
+      font-size: .6rem;
+      letter-spacing: .3em;
+      color: var(--gold);
+      margin-bottom: 2.2rem;
+    }
+
+    .card-bottle {
+      margin-bottom: 2rem;
+      opacity: .45;
+      transition: opacity .42s ease;
+    }
+    .card:hover .card-bottle { opacity: .75; }
+
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: .01em;
+      margin-bottom: .5rem;
+    }
+    .card-character {
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.6rem;
+    }
+
+    .notes-heading {
+      font-size: .56rem;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      margin-bottom: .6rem;
+    }
+    .notes-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+      margin-bottom: 2rem;
+    }
+    .pill {
+      font-size: .62rem;
+      padding: .25rem .7rem;
+      border: 1px solid rgba(200,169,110,.2);
+      color: var(--cream-dim);
+      letter-spacing: .06em;
+      border-radius: 0;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(200,169,110,.1);
+    }
+    .card-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--gold);
+    }
+    .card-action {
+      font-size: .6rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      transition: color .3s ease, letter-spacing .3s ease;
+      padding: 0;
+    }
+    .card:hover .card-action { color: var(--gold); letter-spacing: .26em; }
+
+    /* ─── STORY ─────────────────────────────────────── */
+    #story {
+      background: var(--surface-2);
+      border-top: 1px solid rgba(200,169,110,.07);
+      border-bottom: 1px solid rgba(200,169,110,.07);
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .story-section-title { margin: .5rem 0 1.6rem; }
+
+    .story-p {
+      font-size: .88rem;
+      color: var(--cream-dim);
+      line-height: 1.95;
+      margin-bottom: 1.2rem;
+    }
+
+    .story-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2.2rem;
+      padding-top: 2.2rem;
+      border-top: 1px solid rgba(200,169,110,.1);
+    }
+    .stat { display: flex; flex-direction: column; gap: .2rem; }
+    .stat-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-l {
+      font-size: .58rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+    }
+
+    /* Compass visual */
+    .story-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .compass-wrap {
+      position: relative;
+      width: 390px;
+      height: 390px;
+    }
+    .compass-wrap svg { width: 100%; height: 100%; }
+    .compass-outer-ring {
+      animation: rotateSlow 120s linear infinite;
+      transform-origin: 195px 195px;
+    }
+
+    /* ─── NEWSLETTER ────────────────────────────────── */
+    #newsletter {
+      background: var(--bg);
+      text-align: center;
+    }
+    .newsletter-inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .newsletter-inner .section-title { margin: .5rem 0 .75rem; }
+    .nl-sub {
+      font-size: .84rem;
+      color: var(--cream-dim);
+      margin-bottom: 2.5rem;
+    }
+
+    .nl-form {
+      display: flex;
+      border: 1px solid var(--gold-border);
+      overflow: hidden;
+      transition: border-color .3s ease, box-shadow .3s ease;
+    }
+    .nl-form:focus-within {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold);
+    }
+    .nl-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 1rem 1.4rem;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: .8rem;
+      font-weight: 300;
+      letter-spacing: .04em;
+    }
+    .nl-input::placeholder { color: var(--cream-muted); }
+
+    .nl-btn {
+      background: var(--gold);
+      border: none;
+      padding: 1rem 1.8rem;
+      color: var(--bg);
+      font-family: 'Inter', sans-serif;
+      font-size: .62rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .3s ease, letter-spacing .3s ease;
+      min-width: 120px;
+    }
+    .nl-btn:hover { background: #d4b87a; }
+    .nl-btn.success { background: rgba(200,169,110,.35); letter-spacing: .06em; }
+
+    .nl-note {
+      font-size: .62rem;
+      color: var(--cream-muted);
+      margin-top: 1.1rem;
+      letter-spacing: .06em;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────── */
+    footer {
+      padding: 2.8rem 4rem;
+      background: var(--bg);
+      border-top: 1px solid rgba(200,169,110,.1);
+    }
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: .32em;
+      color: var(--gold);
+    }
+    .footer-links {
+      display: flex;
+      gap: 2.4rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: .62rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      text-decoration: none;
+      transition: color .3s ease;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy {
+      font-size: .62rem;
+      color: var(--cream-muted);
+      letter-spacing: .07em;
+    }
+
+    /* ─── KEYFRAMES ─────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; transform: scaleY(1) translateY(0); }
+      50%       { opacity: .3; transform: scaleY(.5) translateY(4px); }
+    }
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .section-pad { padding: 5.5rem 3rem; }
+      #navbar, #navbar.scrolled { padding-left: 3rem; padding-right: 3rem; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .story-grid { gap: 3.5rem; }
+      .compass-wrap { width: 310px; height: 310px; }
+    }
+
+    @media (max-width: 768px) {
+      #navbar { padding: 1.4rem 1.5rem; }
+      #navbar.scrolled { padding: 1rem 1.5rem; }
+
+      .nav-links {
+        position: fixed;
+        top: 0; right: -100%;
+        height: 100vh;
+        width: 260px;
+        background: rgba(10,10,8,.97);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2.4rem;
+        padding: 3rem 2.5rem;
+        border-left: 1px solid var(--gold-border);
+        transition: right .42s cubic-bezier(.7,0,.3,1);
+        backdrop-filter: blur(20px);
+      }
+      .nav-links.open { right: 0; }
+      .nav-links a { font-size: .82rem; }
+      .nav-toggle { display: flex; }
+
+      .section-pad { padding: 4.5rem 1.5rem; }
+      footer { padding: 2.5rem 1.5rem; }
+
+      .cards-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+
+      .story-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .story-visual { order: -1; }
+      .compass-wrap { width: 250px; height: 250px; }
+
+      .story-stats { flex-wrap: wrap; gap: 2rem; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-headline { font-size: 2.9rem; }
+      .nl-form { flex-direction: column; }
+      .nl-btn { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">FARBOUND</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#collection">Collection</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#newsletter">Shop</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Eau de Parfum &nbsp;·&nbsp; Est. 2024</p>
+    <h1 class="hero-headline">
+      Scents That<br><em>Travel With You</em>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">
+      Rare ingredients gathered from the world's most remote places,
+      bottled for those who carry the spirit of exploration wherever they go.
+    </p>
+    <div class="hero-cta">
+      <a href="#collection" class="btn-primary"><span>Explore Collection</span></a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-bar"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══ COLLECTION ════════════════════════════════════════════════ -->
+<section id="collection" class="section-pad">
+  <div class="collection-header reveal">
+    <p class="section-label">Signature Collection</p>
+    <h2 class="section-title">Three Journeys,&nbsp;<em>One Essence</em></h2>
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- Noir Absolu -->
+    <div class="card reveal delay-1">
+      <div class="card-glow"></div>
+      <p class="card-num">01 &nbsp;—&nbsp; Eau de Parfum</p>
+      <svg class="card-bottle" width="48" height="68" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Noir Absolu</h3>
+      <p class="card-character">Smoky &nbsp;·&nbsp; Resinous &nbsp;·&nbsp; Magnetic</p>
+      <p class="notes-heading">Scent Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Oud Wood</span>
+        <span class="pill">Black Amber</span>
+        <span class="pill">Vetiver</span>
+        <span class="pill">Dark Musk</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$180</span>
+        <button class="card-action">Add to Cart →</button>
+      </div>
+    </div>
+
+    <!-- Santal Dusk -->
+    <div class="card reveal delay-2">
+      <div class="card-glow"></div>
+      <p class="card-num">02 &nbsp;—&nbsp; Eau de Parfum</p>
+      <svg class="card-bottle" width="48" height="68" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Santal Dusk</h3>
+      <p class="card-character">Warm &nbsp;·&nbsp; Earthy &nbsp;·&nbsp; Intimate</p>
+      <p class="notes-heading">Scent Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Sandalwood</span>
+        <span class="pill">Vanilla</span>
+        <span class="pill">Cardamom</span>
+        <span class="pill">Cedarwood</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$165</span>
+        <button class="card-action">Add to Cart →</button>
+      </div>
+    </div>
+
+    <!-- Rose Éternelle -->
+    <div class="card reveal delay-3">
+      <div class="card-glow"></div>
+      <p class="card-num">03 &nbsp;—&nbsp; Eau de Parfum</p>
+      <svg class="card-bottle" width="48" height="68" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Rose Éternelle</h3>
+      <p class="card-character">Floral &nbsp;·&nbsp; Powdery &nbsp;·&nbsp; Eternal</p>
+      <p class="notes-heading">Scent Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Bulgarian Rose</span>
+        <span class="pill">Patchouli</span>
+        <span class="pill">White Musk</span>
+        <span class="pill">Iris</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$195</span>
+        <button class="card-action">Add to Cart →</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ BRAND STORY ═══════════════════════════════════════════════ -->
+<section id="story" class="section-pad">
+  <div class="story-grid">
+
+    <div class="story-text">
+      <p class="section-label reveal">Our Story</p>
+      <h2 class="section-title story-section-title reveal delay-1">
+        Born from Roads<br><em>Less Travelled</em>
+      </h2>
+      <p class="story-p reveal delay-2">
+        FARBOUND was born from a simple obsession: the way a single scent can collapse
+        the distance between who you are and where you've been. From the cedar-laced
+        bazaars of old Marrakech to the salt winds of the Faroe Islands, every fragrance
+        in our collection is a cartography of the senses.
+      </p>
+      <p class="story-p reveal delay-3">
+        We source our raw ingredients with ruthless intention — partnering with growers
+        on six continents, hand-selecting resins, florals, and woods at their peak
+        expression. The result is a perfume house that does not simply smell beautiful,
+        but feels like <em>somewhere</em>.
+      </p>
+      <div class="story-stats reveal delay-4">
+        <div class="stat">
+          <span class="stat-n">6</span>
+          <span class="stat-l">Continents</span>
+        </div>
+        <div class="stat">
+          <span class="stat-n">48+</span>
+          <span class="stat-l">Ingredients</span>
+        </div>
+        <div class="stat">
+          <span class="stat-n">∞</span>
+          <span class="stat-l">Destinations</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-visual reveal delay-2">
+      <div class="compass-wrap">
+        <svg viewBox="0 0 390 390" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Rotating outer text ring -->
+          <g class="compass-outer-ring">
+            <circle cx="195" cy="195" r="183" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".18"/>
+            <defs>
+              <path id="arcPath" d="M 195 195 m -178 0 a 178 178 0 1 1 356 0"/>
+            </defs>
+            <text font-family="Cormorant Garamond, serif" font-size="10.5" fill="#C8A96E" fill-opacity=".35" letter-spacing="19.5">
+              <textPath href="#arcPath">FARBOUND · EAU DE PARFUM · EST. 2024 · </textPath>
+            </text>
+          </g>
+
+          <!-- Static rings -->
+          <circle cx="195" cy="195" r="162" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".22"/>
+          <circle cx="195" cy="195" r="120" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".16"/>
+          <circle cx="195" cy="195" r="76"  stroke="#C8A96E" stroke-width=".5" stroke-opacity=".22"/>
+          <circle cx="195" cy="195" r="34"  stroke="#C8A96E" stroke-width=".5" stroke-opacity=".18"/>
+
+          <!-- Cross-hair lines -->
+          <line x1="195" y1="33"  x2="195" y2="357" stroke="#C8A96E" stroke-width=".3" stroke-opacity=".12"/>
+          <line x1="33"  y1="195" x2="357" y2="195" stroke="#C8A96E" stroke-width=".3" stroke-opacity=".12"/>
+          <line x1="90"  y1="90"  x2="300" y2="300" stroke="#C8A96E" stroke-width=".3" stroke-opacity=".08"/>
+          <line x1="300" y1="90"  x2="90"  y2="300" stroke="#C8A96E" stroke-width=".3" stroke-opacity=".08"/>
+
+          <!-- Cardinal ticks outer -->
+          <line x1="195" y1="12" x2="195" y2="32" stroke="#C8A96E" stroke-width="1"  stroke-opacity=".7"/>
+          <line x1="195" y1="358" x2="195" y2="378" stroke="#C8A96E" stroke-width="1" stroke-opacity=".7"/>
+          <line x1="12"  y1="195" x2="32"  y2="195" stroke="#C8A96E" stroke-width="1" stroke-opacity=".7"/>
+          <line x1="358" y1="195" x2="378" y2="195" stroke="#C8A96E" stroke-width="1" stroke-opacity=".7"/>
+
+          <!-- Inter-cardinal ticks -->
+          <line x1="323" y1="67"  x2="309" y2="81"  stroke="#C8A96E" stroke-width=".6" stroke-opacity=".4"/>
+          <line x1="67"  y1="67"  x2="81"  y2="81"  stroke="#C8A96E" stroke-width=".6" stroke-opacity=".4"/>
+          <line x1="323" y1="323" x2="309" y2="309" stroke="#C8A96E" stroke-width=".6" stroke-opacity=".4"/>
+          <line x1="67"  y1="323" x2="81"  y2="309" stroke="#C8A96E" stroke-width=".6" stroke-opacity=".4"/>
+
+          <!-- N arrow (gold) -->
+          <polygon points="195,48 188,195 195,180 202,195" fill="#C8A96E" fill-opacity=".92"/>
+          <!-- S arrow (dim) -->
+          <polygon points="195,342 188,195 195,210 202,195" fill="#C8A96E" fill-opacity=".28"/>
+
+          <!-- Cardinal labels -->
+          <text x="195" y="46"  font-family="Cormorant Garamond, serif" font-size="15" fill="#C8A96E" fill-opacity=".9" text-anchor="middle" dominant-baseline="auto">N</text>
+          <text x="195" y="382" font-family="Cormorant Garamond, serif" font-size="15" fill="#C8A96E" fill-opacity=".55" text-anchor="middle" dominant-baseline="hanging">S</text>
+          <text x="383" y="200" font-family="Cormorant Garamond, serif" font-size="15" fill="#C8A96E" fill-opacity=".55" text-anchor="start"  dominant-baseline="middle">E</text>
+          <text x="7"   y="200" font-family="Cormorant Garamond, serif" font-size="15" fill="#C8A96E" fill-opacity=".55" text-anchor="end"    dominant-baseline="middle">W</text>
+
+          <!-- Center dot -->
+          <circle cx="195" cy="195" r="4" fill="#C8A96E" fill-opacity=".65"/>
+          <circle cx="195" cy="195" r="1.5" fill="#C8A96E"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ NEWSLETTER ════════════════════════════════════════════════ -->
+<section id="newsletter" class="section-pad">
+  <div class="newsletter-inner">
+    <p class="section-label reveal">Stay Close</p>
+    <h2 class="section-title reveal delay-1">The World,&nbsp;<em>Delivered</em></h2>
+    <p class="nl-sub reveal delay-2">New journeys, rare ingredients, and exclusive drops — straight to your inbox.</p>
+    <form class="nl-form reveal delay-3" id="nlForm">
+      <input
+        type="email"
+        class="nl-input"
+        id="nlEmail"
+        placeholder="Your email address"
+        autocomplete="email"
+        required
+      />
+      <button type="submit" class="nl-btn" id="nlBtn">Subscribe</button>
+    </form>
+    <p class="nl-note reveal delay-4">No noise. One email per month. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">FARBOUND</span>
+    <ul class="footer-links">
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#newsletter">Shop</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <p class="footer-copy">© 2024 FARBOUND. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // ── Navbar scroll state ──────────────────────────────────────────
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ── Mobile nav toggle ────────────────────────────────────────────
+  const toggle = document.getElementById('navToggle');
+  const links  = document.getElementById('navLinks');
+
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('active', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // ── Smooth scroll for all anchor links ──────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // ── Scroll reveal (Intersection Observer) ───────────────────────
+  const io = new IntersectionObserver(
+    entries => entries.forEach(en => {
+      if (en.isIntersecting) en.target.classList.add('visible');
+    }),
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ── Newsletter form ──────────────────────────────────────────────
+  document.getElementById('nlForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const btn   = document.getElementById('nlBtn');
+    const input = document.getElementById('nlEmail');
+    btn.textContent = '✦  Thank you';
+    btn.classList.add('success');
+    input.value = '';
+    setTimeout(() => {
+      btn.textContent = 'Subscribe';
+      btn.classList.remove('success');
+    }, 3200);
+  });
+</script>
+
+</body>
+</html>
