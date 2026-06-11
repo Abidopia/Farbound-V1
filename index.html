@@ -304,10 +304,13 @@
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem;
-      max-width: 1120px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+      max-width: 1400px;
       margin: 0 auto;
+    }
+    @media (max-width: 1300px) {
+      .cards-grid { grid-template-columns: repeat(4, 1fr); }
     }
 
     .card {
@@ -613,7 +616,7 @@
     @media (max-width: 1024px) {
       .section-pad { padding: 5.5rem 3rem; }
       #navbar, #navbar.scrolled { padding-left: 3rem; padding-right: 3rem; }
-      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .cards-grid { grid-template-columns: repeat(3, 1fr); }
       .story-grid { gap: 3.5rem; }
       .compass-wrap { width: 310px; height: 310px; }
     }
@@ -644,7 +647,7 @@
       .section-pad { padding: 4.5rem 1.5rem; }
       footer { padding: 2.5rem 1.5rem; }
 
-      .cards-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
 
       .story-grid { grid-template-columns: 1fr; gap: 3rem; }
       .story-visual { order: -1; }
@@ -659,6 +662,7 @@
       .hero-headline { font-size: 2.9rem; }
       .nl-form { flex-direction: column; }
       .nl-btn { padding: 1rem; }
+      .cards-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -708,17 +712,17 @@
 <!-- ═══ COLLECTION ════════════════════════════════════════════════ -->
 <section id="collection" class="section-pad">
   <div class="collection-header reveal">
-    <p class="section-label">Signature Collection</p>
-    <h2 class="section-title">Three Journeys,&nbsp;<em>One Essence</em></h2>
+    <p class="section-label">The Laverne Line</p>
+    <h2 class="section-title">Fifteen Fragrances,&nbsp;<em>One Vision</em></h2>
   </div>
 
   <div class="cards-grid">
 
-    <!-- Noir Absolu -->
+    <!-- 01 -->
     <div class="card reveal delay-1">
       <div class="card-glow"></div>
-      <p class="card-num">01 &nbsp;—&nbsp; Eau de Parfum</p>
-      <svg class="card-bottle" width="48" height="68" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <p class="card-num">01 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
         <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
         <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
@@ -727,25 +731,24 @@
         <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
       </svg>
       <h3 class="card-name">Noir Absolu</h3>
-      <p class="card-character">Smoky &nbsp;·&nbsp; Resinous &nbsp;·&nbsp; Magnetic</p>
-      <p class="notes-heading">Scent Notes</p>
+      <p class="card-character">Smoky &nbsp;·&nbsp; Resinous</p>
+      <p class="notes-heading">Notes</p>
       <div class="notes-pills">
         <span class="pill">Oud Wood</span>
         <span class="pill">Black Amber</span>
         <span class="pill">Vetiver</span>
-        <span class="pill">Dark Musk</span>
       </div>
       <div class="card-footer">
         <span class="card-price">$180</span>
-        <button class="card-action">Add to Cart →</button>
+        <button class="card-action">Add →</button>
       </div>
     </div>
 
-    <!-- Santal Dusk -->
+    <!-- 02 -->
     <div class="card reveal delay-2">
       <div class="card-glow"></div>
-      <p class="card-num">02 &nbsp;—&nbsp; Eau de Parfum</p>
-      <svg class="card-bottle" width="48" height="68" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <p class="card-num">02 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
         <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
         <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
@@ -754,25 +757,24 @@
         <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
       </svg>
       <h3 class="card-name">Santal Dusk</h3>
-      <p class="card-character">Warm &nbsp;·&nbsp; Earthy &nbsp;·&nbsp; Intimate</p>
-      <p class="notes-heading">Scent Notes</p>
+      <p class="card-character">Warm &nbsp;·&nbsp; Earthy</p>
+      <p class="notes-heading">Notes</p>
       <div class="notes-pills">
         <span class="pill">Sandalwood</span>
         <span class="pill">Vanilla</span>
         <span class="pill">Cardamom</span>
-        <span class="pill">Cedarwood</span>
       </div>
       <div class="card-footer">
         <span class="card-price">$165</span>
-        <button class="card-action">Add to Cart →</button>
+        <button class="card-action">Add →</button>
       </div>
     </div>
 
-    <!-- Rose Éternelle -->
+    <!-- 03 -->
     <div class="card reveal delay-3">
       <div class="card-glow"></div>
-      <p class="card-num">03 &nbsp;—&nbsp; Eau de Parfum</p>
-      <svg class="card-bottle" width="48" height="68" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <p class="card-num">03 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
         <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
         <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
@@ -781,17 +783,328 @@
         <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
       </svg>
       <h3 class="card-name">Rose Éternelle</h3>
-      <p class="card-character">Floral &nbsp;·&nbsp; Powdery &nbsp;·&nbsp; Eternal</p>
-      <p class="notes-heading">Scent Notes</p>
+      <p class="card-character">Floral &nbsp;·&nbsp; Powdery</p>
+      <p class="notes-heading">Notes</p>
       <div class="notes-pills">
         <span class="pill">Bulgarian Rose</span>
         <span class="pill">Patchouli</span>
-        <span class="pill">White Musk</span>
         <span class="pill">Iris</span>
       </div>
       <div class="card-footer">
         <span class="card-price">$195</span>
-        <button class="card-action">Add to Cart →</button>
+        <button class="card-action">Add →</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="card reveal delay-4">
+      <div class="card-glow"></div>
+      <p class="card-num">04 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Ambre Voyage</h3>
+      <p class="card-character">Warm &nbsp;·&nbsp; Spiced</p>
+      <p class="notes-heading">Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Amber</span>
+        <span class="pill">Saffron</span>
+        <span class="pill">Benzoin</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$175</span>
+        <button class="card-action">Add →</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="card reveal delay-1">
+      <div class="card-glow"></div>
+      <p class="card-num">05 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Cèdre Mystique</h3>
+      <p class="card-character">Woody &nbsp;·&nbsp; Dry</p>
+      <p class="notes-heading">Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Cedarwood</span>
+        <span class="pill">Guaiac</span>
+        <span class="pill">Grey Musk</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$185</span>
+        <button class="card-action">Add →</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="card reveal delay-2">
+      <div class="card-glow"></div>
+      <p class="card-num">06 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Oud Nomade</h3>
+      <p class="card-character">Dark &nbsp;·&nbsp; Smoky</p>
+      <p class="notes-heading">Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Oud</span>
+        <span class="pill">Rose Absolute</span>
+        <span class="pill">Labdanum</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$210</span>
+        <button class="card-action">Add →</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="card reveal delay-3">
+      <div class="card-glow"></div>
+      <p class="card-num">07 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Iris Sauvage</h3>
+      <p class="card-character">Powdery &nbsp;·&nbsp; Earthy</p>
+      <p class="notes-heading">Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Iris Root</span>
+        <span class="pill">Violet</span>
+        <span class="pill">Vetiver</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$170</span>
+        <button class="card-action">Add →</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="card reveal delay-4">
+      <div class="card-glow"></div>
+      <p class="card-num">08 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Vétiver Terre</h3>
+      <p class="card-character">Green &nbsp;·&nbsp; Smoky</p>
+      <p class="notes-heading">Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Vetiver</span>
+        <span class="pill">Oakmoss</span>
+        <span class="pill">Tobacco</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$165</span>
+        <button class="card-action">Add →</button>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="card reveal delay-1">
+      <div class="card-glow"></div>
+      <p class="card-num">09 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Jasmin Minuit</h3>
+      <p class="card-character">Floral &nbsp;·&nbsp; Sensual</p>
+      <p class="notes-heading">Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Jasmine</span>
+        <span class="pill">Tuberose</span>
+        <span class="pill">Musk</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$180</span>
+        <button class="card-action">Add →</button>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="card reveal delay-2">
+      <div class="card-glow"></div>
+      <p class="card-num">10 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Patchouli Atlas</h3>
+      <p class="card-character">Deep &nbsp;·&nbsp; Resinous</p>
+      <p class="notes-heading">Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Patchouli</span>
+        <span class="pill">Myrrh</span>
+        <span class="pill">Vanilla</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$175</span>
+        <button class="card-action">Add →</button>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="card reveal delay-3">
+      <div class="card-glow"></div>
+      <p class="card-num">11 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Bergamote Est</h3>
+      <p class="card-character">Fresh &nbsp;·&nbsp; Citrus</p>
+      <p class="notes-heading">Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Bergamot</span>
+        <span class="pill">Green Tea</span>
+        <span class="pill">Neroli</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$160</span>
+        <button class="card-action">Add →</button>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="card reveal delay-4">
+      <div class="card-glow"></div>
+      <p class="card-num">12 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Musc Blanc</h3>
+      <p class="card-character">Clean &nbsp;·&nbsp; Airy</p>
+      <p class="notes-heading">Notes</p>
+      <div class="notes-pills">
+        <span class="pill">White Musk</span>
+        <span class="pill">Cashmere</span>
+        <span class="pill">Sandalwood</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$170</span>
+        <button class="card-action">Add →</button>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="card reveal delay-1">
+      <div class="card-glow"></div>
+      <p class="card-num">13 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Fleur d'Ébène</h3>
+      <p class="card-character">Floral &nbsp;·&nbsp; Woody</p>
+      <p class="notes-heading">Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Ebony Wood</span>
+        <span class="pill">Gardenia</span>
+        <span class="pill">Amber</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$195</span>
+        <button class="card-action">Add →</button>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="card reveal delay-2">
+      <div class="card-glow"></div>
+      <p class="card-num">14 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Encens Sacré</h3>
+      <p class="card-character">Sacred &nbsp;·&nbsp; Smoky</p>
+      <p class="notes-heading">Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Frankincense</span>
+        <span class="pill">Myrrh</span>
+        <span class="pill">Incense</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$200</span>
+        <button class="card-action">Add →</button>
+      </div>
+    </div>
+
+    <!-- 15 -->
+    <div class="card reveal delay-3">
+      <div class="card-glow"></div>
+      <p class="card-num">15 &nbsp;—&nbsp; Laverne</p>
+      <svg class="card-bottle" width="40" height="58" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="1" width="12" height="7" rx="1" stroke="#C8A96E" stroke-width="1"/>
+        <rect x="1" y="8" width="46" height="2" rx="1" fill="#C8A96E" fill-opacity=".4"/>
+        <rect x="4" y="10" width="40" height="57" rx="2" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="4" y1="24" x2="44" y2="24" stroke="#C8A96E" stroke-width=".5" stroke-opacity=".35"/>
+        <circle cx="24" cy="46" r="7" stroke="#C8A96E" stroke-width=".8" stroke-opacity=".55"/>
+        <circle cx="24" cy="46" r="2" fill="#C8A96E" fill-opacity=".4"/>
+      </svg>
+      <h3 class="card-name">Tabac Doré</h3>
+      <p class="card-character">Warm &nbsp;·&nbsp; Leathery</p>
+      <p class="notes-heading">Notes</p>
+      <div class="notes-pills">
+        <span class="pill">Tobacco</span>
+        <span class="pill">Leather</span>
+        <span class="pill">Honey</span>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$185</span>
+        <button class="card-action">Add →</button>
       </div>
     </div>
 
